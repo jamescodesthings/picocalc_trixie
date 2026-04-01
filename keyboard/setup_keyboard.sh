@@ -44,7 +44,7 @@ grep -q "^dtparam=i2c_arm=on" ${CONFIG} || {
 
 if [[ ${need_to_reboot} -eq 0 ]]; then
 	echo "* Unloading and loading module: you don't have to reboot"
-	sudo rmmod ${MODULE_NAME}
+	[[ $(lsmod | grep -c ^${MODULE_NAME}) -ne 0 ]] && sudo rmmod ${MODULE_NAME}
 	sudo modprobe ${MODULE_NAME}
 else
 	echo "Your ${CONFIG} file has been updated, you need to reboot!"
