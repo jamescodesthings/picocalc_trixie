@@ -25,6 +25,7 @@ if [ $? -eq 0 ]; then
 else
   echo "Failed to install poweroff service, try yourself!"
 fi
+cd ..
 
 echo "Setting up keyboard"
 cd keyboard
@@ -34,4 +35,5 @@ if [ $? -eq 0 ]; then
 else
   echo "Failed to run keyboard setup script, try yourself!"
 fi
+cd ..
 
