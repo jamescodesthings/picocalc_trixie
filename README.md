@@ -46,7 +46,7 @@ dtparam=spi=on
 ```
 Insert the driver's configuration:
 ```
-dtoverlay=mipi-dbi-spi,spi0-0,speed=70000000
+dtoverlay=mipi-dbi-spi,spi0-0,speed=70000000,backlight-def-brightness=16
 dtparam=compatible=picomipi\0panel-mipi-dbi-spi
 dtparam=width=320,height=320,width-mm=43,height-mm=43
 dtparam=reset-gpio=25,dc-gpio=24
@@ -70,7 +70,7 @@ chmod +x setup_keyboard.sh
 sudo ./setup_keyboard.sh
 ```
 This script will compile and install the driver. This driver has been modified to suppress the 'mouse' mode (by pressing the right shift key).
-If, for whatever reason you need to have this 'mouse' mode back, check the .c file in the source code and uncomment the section mentioning key 0xA3 (RIGHT_SHIFT). 
+If, for whatever reason you need to have this 'mouse' mode back, check the .c file in the source code and uncomment the section mentioning key 0xA3 (RIGHT_SHIFT).
 
 Check the `/boot/firmware/config.txt` file, it should contain:
 ```
@@ -171,7 +171,7 @@ if [[ ${percent} -gt 100 ]]; then
 		fi
 	fi
 else
-	[[ -t 1 ]] && echo "unplugged" 
+	[[ -t 1 ]] && echo "unplugged"
 fi
 
 # EOF
