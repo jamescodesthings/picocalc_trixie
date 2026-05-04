@@ -1,0 +1,14 @@
+[Unit]
+Description=shutdown PicoCalc
+Conflicts=reboot.target
+DefaultDependencies=no
+After=shutdown.target
+Requires=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/local/bin/picopoweroff
+
+[Install]
+WantedBy=shutdown.target

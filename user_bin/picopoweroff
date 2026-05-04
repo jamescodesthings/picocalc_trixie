@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+OUTPUT=$(i2cset -yf 1 0x1f 0x8e 0x00)
+
+if [ $? -eq 0 ]; then
+  # lol, we're probably dead already
+  echo "Power off command sent successfully!"
+else
+  echo "Failed to send power off command, try yourself!" >> $HOME/poweroff_error.log
+  echo "Error details: $OUTPUT" >> $HOME/poweroff_error.log
+fi

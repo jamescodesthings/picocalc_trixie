@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -z "$WIFI_SSID" ] || [ -z "$WIFI_PASSWORD" ]; then
+  echo "WIFI_SSID and WIFI_PASSWORD environment variables must be set! put them in your private env files."
+  exit 1
+fi
+
+sudo nmcli dev wifi connect "$WIFI_SSID" password "$WIFI_PASSWORD"

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+echo "Copying screenrc to home directory..."
+cp ./user_config/.screenrc $HOME/
+if [ $? -eq 0 ]; then
+  echo ".screenrc copied successfully!"
+else
+  echo "Failed to copy .screenrc to home directory, try yourself!"
+fi
+
+echo "Copying user scripts to /usr/local/bin"
+sudo cp ./user_bin/* /usr/local/bin/
+if [ $? -eq 0 ]; then
+  echo "User scripts copied successfully!"
+else
+  echo "Failed to copy user scripts to /usr/local/bin, try yourself!"
+fi
+
+echo "Making poweroff service"
+sudo cp ./poweroff/picopoweroff.service /usr/lib/systemd/system/
+if [ $? -eq 0 ]; then
+  echo "Poweroff service copied successfully!"
+else
+  echo "Failed to copy poweroff service, try yourself!"
+fi
+
+echo "Reloading systemd daemon and enabling poweroff service"
+sudo systemctl daemon-reload
+if [ $? -eq 0 ]; then
+  echo "Systemd daemon reloaded successfully!"
+else
+  echo "Failed to reload systemd daemon, try yourself!"
+fi
+
+echo "Enabling poweroff service"
+sudo systemctl enable picopoweroff.service
+if [ $? -eq 0 ]; then
+  echo "Poweroff service enabled successfully!"
+else
+  echo "Failed to enable poweroff service, try yourself!"
+fi
+
+sudo cp ./poweroff/poweroff-logs /usr/local/bin/
+sudo cp ./poweroff/poweroff-status /usr/local/bin/
+
+echo "Service Installation complete! use 'poweroff-status' to check service"
+
+echo "Setting up keyboard"
+cd keyboard
+./setup_keyboard.sh
+echo "Keyboard setup complete!"
+

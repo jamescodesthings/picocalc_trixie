@@ -3,7 +3,7 @@
 percent=$(cat /sys/firmware/picocalc/battery_percent)
 if [[ ${percent} -gt 100 ]]; then
 	if [[ -t 1 ]]; then
-	       echo "plugged"
+	  echo "plugged in"
 	else
 		if [[ ${percent} -ge 228 ]]; then
 			echo -n 'F'
@@ -12,7 +12,7 @@ if [[ ${percent} -gt 100 ]]; then
 		fi
 	fi
 else
-	[[ -t 1 ]] && echo "unplugged" 
+	[[ -t 1 ]] && echo "unplugged"
 fi
 
 # EOF
