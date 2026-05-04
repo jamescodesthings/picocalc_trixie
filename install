@@ -47,6 +47,10 @@ echo "Service Installation complete! use 'poweroff-status' to check service"
 
 echo "Setting up keyboard"
 cd keyboard
-./setup_keyboard.sh
-echo "Keyboard setup complete!"
+sudo ./setup_keyboard.sh
+if [ $? -eq 0 ]; then
+  echo "Keyboard setup script ran successfully!"
+else
+  echo "Failed to run keyboard setup script, try yourself!"
+fi
 
