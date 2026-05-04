@@ -226,8 +226,9 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
-  /* right shift */
-  if (ev->scancode == 0xA3)
+  /* RIGHT_SHIFT */
+  // Moved to F5 (top right of the keyboard)
+  if (ev->scancode == 0x85)
   {
     if (ev->state == KEY_STATE_PRESSED)
     {
