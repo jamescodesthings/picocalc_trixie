@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+sudo cp ./poweroff/picopoweroff.service /usr/lib/systemd/system/
+if [ $? -eq 0 ]; then
+  echo "Poweroff service copied successfully!"
+else
+  echo "Failed to copy poweroff service, try yourself!"
+fi
+
+echo "Reloading systemd daemon and enabling poweroff service"
+sudo systemctl daemon-reload
+if [ $? -eq 0 ]; then
+  echo "Systemd daemon reloaded successfully!"
+else
+  echo "Failed to reload systemd daemon, try yourself!"
+fi
+
+echo "Enabling poweroff service"
+sudo systemctl enable picopoweroff.service
+if [ $? -eq 0 ]; then
+  echo "Poweroff service enabled successfully!"
+else
+  echo "Failed to enable poweroff service, try yourself!"
+fi
+
+echo "copying poweroff scripts to /usr/local/bin"
+sudo cp ./poweroff/poweroff-logs /usr/local/bin/
+if [ $? -eq 0 ]; then
+  echo "Poweroff logs script copied successfully!"
+else
+  echo "Failed to copy poweroff logs script, try yourself!"
+fi
+sudo cp ./poweroff/poweroff-status /usr/local/bin/
+if [ $? -eq 0 ]; then
+  echo "Poweroff status script copied successfully!"
+else
+  echo "Failed to copy poweroff status script, try yourself!"
+fi

@@ -16,34 +16,15 @@ else
   echo "Failed to copy user scripts to /usr/local/bin, try yourself!"
 fi
 
-echo "Making poweroff service"
-sudo cp ./poweroff/picopoweroff.service /usr/lib/systemd/system/
+echo "Reinstalling poweroff service"
+./poweroff/uninstall
+cd poweroff
+sudo ./install
 if [ $? -eq 0 ]; then
-  echo "Poweroff service copied successfully!"
+  echo "Poweroff service installed successfully!"
 else
-  echo "Failed to copy poweroff service, try yourself!"
+  echo "Failed to install poweroff service, try yourself!"
 fi
-
-echo "Reloading systemd daemon and enabling poweroff service"
-sudo systemctl daemon-reload
-if [ $? -eq 0 ]; then
-  echo "Systemd daemon reloaded successfully!"
-else
-  echo "Failed to reload systemd daemon, try yourself!"
-fi
-
-echo "Enabling poweroff service"
-sudo systemctl enable picopoweroff.service
-if [ $? -eq 0 ]; then
-  echo "Poweroff service enabled successfully!"
-else
-  echo "Failed to enable poweroff service, try yourself!"
-fi
-
-sudo cp ./poweroff/poweroff-logs /usr/local/bin/
-sudo cp ./poweroff/poweroff-status /usr/local/bin/
-
-echo "Service Installation complete! use 'poweroff-status' to check service"
 
 echo "Setting up keyboard"
 cd keyboard
