@@ -1,0 +1,13 @@
+{
+  "name": "picocalc-cheatsheet",
+  "version": "1.0.0",
+  "description": "PicoCalc keyboard + PICO-8 cheatsheet builder",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=cheatsheet:* node index"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "ejs": "^3.1.9"
+  }
+}

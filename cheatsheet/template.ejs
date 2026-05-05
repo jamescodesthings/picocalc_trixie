@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PicoCalc Cheatsheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button id="dark-toggle" aria-label="Toggle dark mode">&#9790;</button>
+
+  <header>
+    <h1>PicoCalc</h1>
+    <p class="subtitle">Keyboard &amp; PICO-8 Reference</p>
+  </header>
+
+  <main>
+    <section class="panel keyboard-panel">
+      <h2>Keyboard Shortcuts</h2>
+      <div class="category-grid">
+        <% for (const [category, items] of Object.entries(shortcutCategories)) { %>
+        <div class="category-block">
+          <h3><%= category %></h3>
+          <table class="shortcut-table">
+            <% items.forEach(function(item) { %>
+            <tr>
+              <td class="key"><code><%= item.shortcut %></code></td>
+              <td class="desc"><%= item.description %></td>
+            </tr>
+            <% }); %>
+          </table>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <section class="panel api-panel">
+      <h2>PICO-8 API</h2>
+      <div class="category-grid">
+        <% for (const [category, items] of Object.entries(apiCategories)) { %>
+        <div class="category-block">
+          <h3><%= category.replace('API: ', '') %></h3>
+          <% items.forEach(function(item) { %>
+          <div class="api-entry">
+            <code class="sig"><%= item.signature %></code>
+            <span class="desc"><%= item.description %></span>
+          </div>
+          <% }); %>
+        </div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
