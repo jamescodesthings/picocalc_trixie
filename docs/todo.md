@@ -12,13 +12,14 @@ After each task is marked complete:
 
 ## Task Dependencies
 
+Tasks 1, 2, 2b, 4b all touch `picocalc_kbd.c` — they must run **sequentially** in this order.
+Task 6 (display) is fully independent — run in parallel with the keyboard sequence.
+Cheatsheet and task 4 are downstream.
+
 ```
-2b (mouse buttons) ───────────────────────────────────────────────────┐
-1  (lshift+arrows) ──────────────────────────────┐                    │
-2  (rshift layer)  ──────────────────────────────┴──► 4 ──► 5         │
-4b (sticky alt)    ───────────────────────────────────────────────────┤
-6  (display)       ───────────────────────────────────────────────────┤
-                   └── first wave: all independent, run in parallel ──┘
+picocalc_kbd.c tasks (sequential):  2b ──► 1 ──► 2 ──► 4b ──┐
+                                                               ├──► 4 ──► cheatsheet
+display (independent, parallel):    6 ────────────────────────┘
 ```
 
 ## [ ] Keyboard Driver
