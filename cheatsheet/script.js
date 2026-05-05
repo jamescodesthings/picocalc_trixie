@@ -2,21 +2,22 @@
   var btn = document.getElementById('dark-toggle');
   var body = document.body;
 
-  function applyDark(isDark) {
-    if (isDark) {
-      body.classList.add('dark');
-      btn.innerHTML = '&#9728;';
+  function applyTheme(isLight) {
+    if (isLight) {
+      body.classList.add('light');
+      btn.textContent = 'DARK';
     } else {
-      body.classList.remove('dark');
-      btn.innerHTML = '&#9790;';
+      body.classList.remove('light');
+      btn.textContent = 'LITE';
     }
   }
 
-  applyDark(localStorage.getItem('picocalc-dark') === '1');
+  var saved = localStorage.getItem('picocalc-theme');
+  applyTheme(saved === 'light');
 
   btn.addEventListener('click', function () {
-    var isDark = !body.classList.contains('dark');
-    applyDark(isDark);
-    localStorage.setItem('picocalc-dark', isDark ? '1' : '0');
+    var isLight = !body.classList.contains('light');
+    applyTheme(isLight);
+    localStorage.setItem('picocalc-theme', isLight ? 'light' : 'dark');
   });
 })();

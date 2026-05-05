@@ -105,7 +105,7 @@ display (independent, parallel):    6 ──────────────
 - [x] `docs/build_log.md` — build steps summary
 - [x] `docs/pico8_reference.md` — PICO-8 keyboard/mouse reference
 
-## [ ] Printable HTML Cheatsheet: Keyboard and Pico-8 functions
+## [x] Printable HTML Cheatsheet: Keyboard and Pico-8 functions
 
 Purpose:
 ```
@@ -134,27 +134,29 @@ In the terminal we'll sometimes use `git`, `httpie`, `bat` and other local comma
         - F5 to toggle
     - Pico-8 Section (PICO-8 Reference):
       - This should be a more traditional cheatsheet and function reference for commonly used PICO-8 features and functions.
-        - [ ] Check out: https://ztiromoritz.github.io/pico-8-spick/index_en.html for reference.
-        - [ ] Check out: https://www.lexaloffle.com/bbs/?tid=54246https://www.lexaloffle.com/bbs/?tid=54246 as another reference.
+        - [x] Check out: https://ztiromoritz.github.io/pico-8-spick/index_en.html for reference.
+        - [x] Check out: https://www.lexaloffle.com/bbs/?tid=54246https://www.lexaloffle.com/bbs/?tid=54246 as another reference.
   - Style reference: https://ztiromoritz.github.io/pico-8-spick/index_en.html
   - Font: PICO-8 font variants from https://www.lexaloffle.com/bbs/?tid=3760
-  - [ ] Check out the references
-  - [ ] Create the `cheatsheet/cheatsheet.md`
-  - [ ] Finalise the content, make sure it's accurate and complete based on our confirmed shortcuts and the PICO-8 reference.
-  - [ ] Download PICO-8 font files to `cheatsheet/fonts/`
-  - [ ] Create cheatsheet:
+  - [x] Check out the references
+  - [x] Create the `cheatsheet/cheatsheet.md`
+  - [x] Finalise the content, make sure it's accurate and complete based on our confirmed shortcuts and the PICO-8 reference.
+  - [x] Download PICO-8 font files to `cheatsheet/fonts/`
+  - [x] Create cheatsheet:
     - A node project in `./cheatsheet` which has an `npm start` command that runs `node index` to build our cheatsheet and output logs about what we're doing using `npm.js/debug`, it uses `ejs` to build the cheatsheet.
     - `cheatsheet/data.json` — array of shortcut objects: `{ shortcut, description, category }`. Categories e.g. `PICO-8: General`, `PICO-8: Editor`, `General`, `Mouse Mode`
     - `cheatsheet/style.css` — the stylesheet.
     - `cheatsheet/template.ejs` - an EJS template for the cheatsheet
     - `cheatsheet/index.js` — reads `data.json`, builds the HTML
-  - [ ] Populate the data.json
-  - [ ] Create the EJS template for the cheatsheet, use the style.css for styling.
-  - [ ] create the `style.css` for the cheatsheet, make it look nice and print-friendly.
-  - [ ] Create the `index.js` script to build the cheatsheet
-  - [ ] Run the script, generate the cheatsheet HTML, check logs for any issues.
-  - [ ] use the front end design skill to improve the cheatsheet, give it context of what we're doing, and what it's for (print primarily, but responsive browser use too).
+  - [x] Populate the data.json
+  - [x] Create the EJS template for the cheatsheet, use the style.css for styling.
+  - [x] create the `style.css` for the cheatsheet, make it look nice and print-friendly.
+  - [x] Create the `index.js` script to build the cheatsheet
+  - [x] Run the script, generate the cheatsheet HTML, check logs for any issues.
+  - [x] use the front end design skill to improve the cheatsheet, give it context of what we're doing, and what it's for (print primarily, but responsive browser use too).
     - Make sure it's clear, easy to read, and visually appealing. (within the confines of a simple cheatsheet style using the pico-8 font).
-  - [ ] Add a dark mode, and a dark mode toggle button on the page. With an external `script.js` to handle the toggle and remember the user's preference in local storage.
-  - [ ] Make sure it's responsive down to the phone screen size (up to iphone 14 pro max size) and then also suits screens of 480p, 720p, 1080p, and 4k.
-  - [ ] Final review of the cheatsheet, make sure all shortcuts are correct and the formatting is good.
+  - [x] Add a dark mode, and a dark mode toggle button on the page. With an external `script.js` to handle the toggle and remember the user's preference in local storage.
+  - [x] Make sure it's responsive down to the phone screen size (up to iphone 14 pro max size) and then also suits screens of 480p, 720p, 1080p, and 4k.
+  - [x] Final review of the cheatsheet, make sure all shortcuts are correct and the formatting is good.
+
+  **Task Complete** — Node/EJS builder (`index.js`, `data.json`, `template.ejs`) generates `cheatsheet.html` with 50 shortcuts across 7 categories and 60 PICO-8 API entries across 11 categories. PICO-8 font (MIT, jacobpierce/pico-8-font) used throughout. Full PICO-8 palette cycles across category blocks (colored left-border + heading). CRT scanline overlay in dark mode. Blinking `_` cursor in header. Key badges with 3D bottom-border press effect. `LITE`/`DARK` pixel-art toggle button. Print mode: 4-column grid, white, crisp. Responsive from iPhone 14 Pro Max up to 4K. Dark-by-default; localStorage key `picocalc-theme`.
