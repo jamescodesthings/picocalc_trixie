@@ -13,12 +13,12 @@ Alt+key function to control hardware (brightness, etc.).
 **D-pad** (top left) — 4-way directional cross
 
 **Top function row** (to the right of the d-pad, above the rest of the keyboard) — F1–F5, with
-Shift+F1–F5 = F6–F10. Pressing F5 toggles mouse mode: arrows move the cursor, `]` = LMB, `[` = RMB.
+Shift+F1–F5 = F6–F10. Pressing F5 toggles mouse mode: arrows move the cursor, `[` = LMB, `]` = RMB.
 
 **Esc/Backspace row** — Esc/Brk, Tab/Home, CapsLock, Del/End, Backspace
 
 **Backtick row** — `` ` ``/`~`, `/`/`?`, `\`/`|`, `-`/`_`, `=`/`+`, `[`/`{`, `]`/`}`. In mouse
-mode `[` = LMB and `]` = RMB. (Note: driver currently has these swapped — see todo.)
+mode `[` = LMB and `]` = RMB.
 
 **Numbers row** — `1`–`0` with Shift giving `!@#$%^&*()`
 
@@ -30,8 +30,8 @@ mode `[` = LMB and `]` = RMB. (Note: driver currently has these swapped — see 
 Alt+`.` = screen brighten.
 
 **Modifiers row** — LShift (wide), Ctrl (wide), Alt (wide), Space (extra-wide; Alt+Space = keyboard
-brightness up), `;`/`:`, `'`/`"`, RShift (wide; intercepted by driver as mouse mode toggle — no
-shift emitted to OS).
+brightness up), `;`/`:`, `'`/`"`, RShift (wide; intercepted by driver as function layer modifier —
+no KEY_RIGHTSHIFT emitted to OS; see Macros table below).
 
 ### Photo reference
 
@@ -73,7 +73,7 @@ Activated by pressing F5.
 In this mode:
 
 - the arrow keys emit relative mouse movements instead of arrow key events
--  `]`/`[` emit left/right mouse clicks instead of their normal key events
+- `[`/`]` emit left/right mouse clicks instead of their normal key events
 - Pressing F5 again exits mouse mode.
 
 ## Macros
@@ -85,6 +85,19 @@ In this mode:
 | Alt+, | Screen dim |
 | Alt+. | Screen brighten |
 | Alt+Space | Keyboard backlight brighten |
+| RSHIFT + ← | Home |
+| RSHIFT + → | End |
+| RSHIFT + ↑ | Page Up |
+| RSHIFT + ↓ | Page Down |
+| RSHIFT + key | Ctrl+key |
+| RSHIFT + `[` | Ctrl+Home (file/buffer start) |
+| RSHIFT + `]` | Ctrl+End (file/buffer end) |
+| LSHIFT + RSHIFT + key | Ctrl+Shift+key |
+| LSHIFT + RSHIFT + arrow | Ctrl+Shift+arrow (word-select) |
+| LSHIFT + RSHIFT + `[` | Shift+Home (select to line start) |
+| LSHIFT + RSHIFT + `]` | Shift+End (select to line end) |
+
+> Alt+F / Alt+B — word jump forward/backward in readline — works natively via physical Alt key, no driver change needed.
 
 ## Driver Architecture
 
@@ -138,23 +151,46 @@ Resets `ctx->key_fifo_count` to 0. Loops up to 31 times calling `kbd_read_i2c_2u
 **`key_report_event(ctx, ev)`**
 1. Drops events where state is not pressed(1), released(3), or hold(2).
 2. Scancode `0x85`: flips `ctx->mouse_mode` on press, returns — nothing emitted to OS.
-3. If `mouse_mode`:
+3. Scancode `0xA2` (LSHIFT): sets/clears `ctx->lshift_held` on press/release; falls through to
+   normal processing so KEY_LEFTSHIFT is still emitted.
+3a. Scancode `0xA1` (ALT): sets/clears `ctx->lalt_held` on press/release; falls through so
+    KEY_LEFTALT is still emitted.
+3b. Scancode `0xA5` (CTRL): sets/clears `ctx->lctrl_held` on press/release; falls through so
+    KEY_LEFTCTRL is still emitted.
+4. Scancode `0xA3` (RSHIFT): sets `ctx->rshift_held = 1` and `ctx->rshift_used = 0` on press;
+   clears `ctx->rshift_held` on release; returns immediately — KEY_RIGHTSHIFT is never emitted.
+5. If `ctx->rshift_held` and event is a press or hold:
+   - Sets `ctx->rshift_used = 1`.
+   - If `lshift_held` is 0: checks `rshift_macros[]` table; if scancode matches, emits the mapped
+     nav key (press+release) and returns. Then (on press only) checks for `[` (0x5B) and `]` (0x5D):
+     emits Ctrl+Home or Ctrl+End respectively and returns.
+   - If `lshift_held` is 1: on press only, checks for `[` (0x5B) and `]` (0x5D); re-asserts
+     KEY_LEFTSHIFT then emits Home or End respectively and returns (Shift+Home / Shift+End).
+   - Fallthrough (no special match): looks up `keycodes[scancode]`; if valid, emits
+     KEY_LEFTCTRL down, key down/up, KEY_LEFTCTRL up, then returns. With lshift_held the OS already
+     has KEY_LEFTSHIFT held, so the result is Ctrl+Shift+key.
+6. If `mouse_mode`:
    - Arrow scancodes (0xB4–0xB7): set/clear bits in `ctx->mouse_move_dir`; reset `last_keypress_at`
      when a direction is first activated.
-   - `]` (0x5D): emits `BTN_LEFT` press/release.
-   - `[` (0x5B): emits `BTN_RIGHT` press/release.
+   - `[` (0x5B): emits `BTN_LEFT` press/release.
+   - `]` (0x5D): emits `BTN_RIGHT` press/release.
    - All other scancodes fall through to normal key handling below.
-4. Posts `EV_MSC / MSC_SCAN` with raw scancode.
-5. Looks up `keycodes[scancode]`. Skips if 0 or `KEY_UNKNOWN`.
-6. Updates `ctx->last_keypress_at` to current boot time (ns).
-7. Hold state (2): returns here — no key event (OS `EV_REP` handles repeat).
-8. Pressed/released: calls `input_report_key(dev, keycode, state == pressed)`.
+7. Posts `EV_MSC / MSC_SCAN` with raw scancode.
+8. Looks up `keycodes[scancode]`. Skips if 0 or `KEY_UNKNOWN`.
+9. Updates `ctx->last_keypress_at` to current boot time (ns).
+10. Hold state (2): returns here — no key event (OS `EV_REP` handles repeat).
+11. Pressed/released with `lshift_held` and an arrow key: re-asserts KEY_LEFTSHIFT before emitting
+    the arrow, ensuring the OS sees Shift+arrow for selection.
+12. Calls `input_report_key(dev, keycode, state == pressed)`.
 
 **`input_workqueue_handler(work)`**
 Retrieves `ctx` via `container_of`. Calls `input_fw_read_fifo`, then `key_report_event` for each
-FIFO item. If `mouse_mode` is active, calculates `mouse_move_step` (1/2/4 pixels) from time elapsed
-since `last_keypress_at` (≤150 ms → 1, ≤450 ms → 2, >450 ms → 4), then emits `REL_X`/`REL_Y` for
-each active direction bit. Resets `key_fifo_count` to 0. Calls `input_sync`.
+FIFO item. If `key_fifo_count == KBD_FIFO_SIZE` after processing (potential FIFO overflow), emits
+synthetic key-up events for any held modifiers (`lshift_held`, `lalt_held`, `lctrl_held`) and resets
+`rshift_held`/`rshift_used`, preventing stuck modifiers when release events are lost. If `mouse_mode`
+is active, calculates `mouse_move_step` (1/2/4 pixels) from time elapsed since `last_keypress_at`
+(≤150 ms → 1, ≤450 ms → 2, >450 ms → 4), then emits `REL_X`/`REL_Y` for each active direction bit.
+Resets `key_fifo_count` to 0. Calls `input_sync`.
 
 **`kbd_timer_function(data)`**
 Reschedules itself for `jiffies + HZ/128`. Calls `schedule_work` on the global context's work struct.

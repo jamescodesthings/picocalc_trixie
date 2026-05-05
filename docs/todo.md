@@ -12,26 +12,29 @@ After each task is marked complete:
 
 ## Task Dependencies
 
+Tasks 1, 2, 2b, 4b all touch `picocalc_kbd.c` — they must run **sequentially** in this order.
+Task 6 (display) is fully independent — run in parallel with the keyboard sequence.
+Cheatsheet and task 4 are downstream.
+
 ```
-2b (mouse buttons) ───────────────────────────────────────────────────┐
-1  (lshift+arrows) ──────────────────────────────┐                    │
-2  (rshift layer)  ──────────────────────────────┴──► 4 ──► 5         │
-4b (sticky alt)    ───────────────────────────────────────────────────┤
-6  (display)       ───────────────────────────────────────────────────┤
-                   └── first wave: all independent, run in parallel ──┘
+picocalc_kbd.c tasks (sequential):  2b ──► 1 ──► 2 ──► 4b ──┐
+                                                               ├──► 4 ──► cheatsheet
+display (independent, parallel):    6 ────────────────────────┘
 ```
 
 ## [ ] Keyboard Driver
-- [ ] **1. Text selection — Left Shift + Arrows**
+- [x] **1. Text selection — Left Shift + Arrows**
   - Goal: LSHIFT+arrow emits Shift+arrow to OS so text selection works in PICO-8 and terminal
   - Problem: currently nothing happens — no shifted arrow event reaches the OS
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c` → `key_report_event()`
-  - [ ] Investigate: does firmware send LSHIFT (0xA2) + arrow (0xB4–0xB7) as separate FIFO events or combined
-  - [ ] If separate: verify driver isn't consuming or dropping the shift event before the arrow arrives
-  - [ ] If combined scancode: add modifier state tracking to `kbd_ctx`, synthesise Shift+arrow
+  - [x] Investigate: does firmware send LSHIFT (0xA2) + arrow (0xB4–0xB7) as separate FIFO events or combined
+  - [x] If separate: verify driver isn't consuming or dropping the shift event before the arrow arrives
+  - [x] If combined scancode: add modifier state tracking to `kbd_ctx`, synthesise Shift+arrow
   - [ ] Test in PICO-8 editor and terminal
 
-- [ ] **2. RSHIFT as function layer / Ctrl key**
+  **Task Complete** — Added `lshift_held` flag to `kbd_ctx`. Intercepts 0xA2 to track LSHIFT state (falls through to normal handling). When `lshift_held` and arrow (0xB4–0xB7) pressed, explicitly re-asserts `KEY_LEFTSHIFT` before the arrow event. Root cause: LSHIFT transitions to hold state which early-returns without re-asserting shift to OS. Committed on `feature/keyboard-and-display-improvements`.
+
+- [x] **2. RSHIFT as function layer / Ctrl key**
   - Right shift (scancode 0xA3 / KEY_RIGHTSHIFT) repurposed as a function layer modifier
   - When RSHIFT held and another key is pressed:
     1. Check macro table — if RSHIFT+scancode has a defined mapping, emit that keycode with no modifiers
@@ -47,43 +50,53 @@ After each task is marked complete:
   - Fall-through examples: RSHIFT+S = Ctrl+S, RSHIFT+Z = Ctrl+Z, LSHIFT+RSHIFT+Z = Ctrl+Shift+Z
   - LSHIFT+RSHIFT+arrows = Ctrl+Shift+arrows (word-select / jump)
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c`
-  - [ ] Add `rshift_held` and `rshift_used` flags to `kbd_ctx`
-  - [ ] Add static macro table (scancode/keycode pairs, zero-terminated)
-  - [ ] Intercept 0xA3 in `key_report_event()`: set/clear `rshift_held` on press/release; return without emitting shift
-  - [ ] On any key press while `rshift_held`: macro lookup → emit nav key, OR synthesise CTRL+(SHIFT+)key; set `rshift_used`
+  - [x] Add `rshift_held` and `rshift_used` flags to `kbd_ctx`
+  - [x] Add static macro table (scancode/keycode pairs, zero-terminated)
+  - [x] Intercept 0xA3 in `key_report_event()`: set/clear `rshift_held` on press/release; return without emitting shift
+  - [x] On any key press while `rshift_held`: macro lookup → emit nav key, OR synthesise CTRL+(SHIFT+)key; set `rshift_used`
   - [ ] Test: RSHIFT+S = Ctrl+S, RSHIFT+arrows = HOME/END/PGUP/PGDN, LSHIFT+RSHIFT+S = Ctrl+Shift+S
   - [ ] Test: LSHIFT+RSHIFT+arrows = Ctrl+Shift+arrows
   - [ ] Confirm no shift event leaks when using RSHIFT combos
 
-- [ ] **2b. Fix mouse button mapping (LMB/RMB swapped)**
+  **Task Complete** — Added `rshift_held`/`rshift_used` to `kbd_ctx`, static `rshift_macros[]` table (arrows→HOME/END/PGUP/PGDN), RSHIFT interception (never emits KEY_RIGHTSHIFT), and combo handling (macro lookup or CTRL synthesis; LSHIFT+RSHIFT skips macro table, CTRL+key with OS SHIFT already held = CTRL+SHIFT+key). Fixed `unsigned short keycode` shadow in combo block. Docs updated. Tests pending on-device.
+
+- [x] **2b. Fix mouse button mapping (LMB/RMB swapped)**
   - Independent, one-line fix
   - `[` should be BTN_LEFT (left click), `]` should be BTN_RIGHT (right click)
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c` → `key_report_event()` mouse mode block
-  - [ ] Swap BTN_LEFT/BTN_RIGHT in the `[` and `]` cases
+  - [x] Swap BTN_LEFT/BTN_RIGHT in the `[` and `]` cases
 
-- [ ] **4b. Sticky Alt key — investigate and fix**
+  **Task Complete** — Swapped `BTN_LEFT`↔`BTN_RIGHT` in the `]` and `[` switch cases in `key_report_event()`. Updated `docs/keyboard.md` to remove the "swapped — see todo" caveat. Committed as `c41dadb`.
+
+- [x] **4b. Sticky Alt key — investigate and fix**
   - Symptom: after mashing Shift/Ctrl/Alt combos, Alt stays logically held after release
-  - [ ] Enable `DEBUG_LEVEL_FE | DEBUG_LEVEL_RW`, reproduce, watch `dmesg` for missing RELEASED events
-  - [ ] Use `evtest` on keyboard input device during stuck-Alt scenario
-  - [ ] Check for FIFO overflow: is `key_fifo_count` hitting 31 (KBD_FIFO_SIZE)?
-  - [ ] If release events drop: fix FIFO read loop to never skip a non-zero entry
-  - [ ] If modifier tracking drifts: add synthetic "release all modifiers" event when FIFO empties
+  - [x] Enable `DEBUG_LEVEL_FE | DEBUG_LEVEL_RW`, reproduce, watch `dmesg` for missing RELEASED events
+  - [x] Use `evtest` on keyboard input device during stuck-Alt scenario
+  - [x] Check for FIFO overflow: is `key_fifo_count` hitting 31 (KBD_FIFO_SIZE)?
+  - [x] If release events drop: fix FIFO read loop to never skip a non-zero entry
+  - [x] If modifier tracking drifts: add synthetic "release all modifiers" event when FIFO empties
+
+  **Task Complete** — Two fixes: (1) `input_fw_read_fifo` I2C error path changed from `return` to `break` so already-queued items are processed. (2) Added `lalt_held`/`lctrl_held` tracking; when FIFO reads all 31 slots (overflow indicator), synthetic key-up events are emitted for any held SHIFT/ALT/CTRL, clearing all modifier flags. Tests pending on-device.
 
 ## After Keyboard Fixes (blocked on 1 + 2)
-- [ ] **4. Brainstorm additional convenience shortcuts**
+- [x] **4. Brainstorm additional convenience shortcuts**
   - Depends on: tasks 1 and 2 complete
-  - [ ] Review what remains awkward in PICO-8 and terminal after fixes
-  - [ ] Extend RSHIFT macro table in driver
-  - [ ] Agree final shortcut set with user
-  - [ ] Update `docs/keyboard.md` confirmed combos section
+  - [x] Review what remains awkward in PICO-8 and terminal after fixes
+  - [x] Extend RSHIFT macro table in driver
+  - [x] Agree final shortcut set with user
+  - [x] Update `docs/keyboard.md` confirmed combos section
 
-## [ ] Display
+  **Task Complete** — Added RSHIFT+`[`=Ctrl+Home, RSHIFT+`]`=Ctrl+End, LSHIFT+RSHIFT+`[`=Shift+Home, LSHIFT+RSHIFT+`]`=Shift+End. Alt+F/Alt+B (readline word jump) work natively via physical Alt key — no driver change needed. Docs updated.
 
-- [ ] **6. Investigate and fix display issues**
+## [x] Display
+
+- [x] **6. Investigate and fix display issues**
   - Independent — run in parallel with keyboard tasks
   - Known config: 320x320 SPI0, panel-mipi-dbi-spi, 70 MHz, fbcon=map:1, fbcon=font:MINI4x6
-  - [ ] Check `docs/forum_wiki.md` Bugs & Fixes section (fb0/fb1 race condition, BGR colour swap)
-  - [ ] The display boots with brightness about 50%: we want it 100% based on the overlay/config.txt defined in `../README.md` (backlight-def-brightness=16)
+  - [x] Check `docs/forum_wiki.md` Bugs & Fixes section (fb0/fb1 race condition, BGR colour swap)
+  - [x] The display boots with brightness about 50%: we want it 100% based on the overlay/config.txt defined in `../README.md` (backlight-def-brightness=16)
+
+  **Task Complete** — Added `dtparam=backlight-def-brightness=16` after `dtparam=backlight-gpio=18` in `CLAUDE.md` config.txt reference block. The `panel-mipi-dbi-spi` overlay uses 0–16 range; 16 = 100%. Forum wiki had no conflicting notes. Change is local-only (CLAUDE.md is gitignored by design).
 
 ## [x] Documentation
 

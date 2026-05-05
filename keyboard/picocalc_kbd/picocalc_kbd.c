@@ -76,6 +76,11 @@ struct kbd_ctx
   uint64_t last_keypress_at;
 
   int mouse_mode;
+  int lshift_held;
+  int rshift_held;
+  int rshift_used;
+  int lalt_held;
+  int lctrl_held;
   uint8_t mouse_move_dir;
 };
 
@@ -184,7 +189,7 @@ if (kbd_read_i2c_u8(ctx->i2c_client, REG_KEY, &ctx->key_fifo_count)) {
 
       dev_err(&ctx->i2c_client->dev,
               "%s Could not read REG_FIF, Error: %d\n", __func__, rc);
-      return;
+      break;
     }
 
     if (data[0] == 0)
@@ -215,6 +220,18 @@ if (kbd_read_i2c_u8(ctx->i2c_client, REG_KEY, &ctx->key_fifo_count)) {
   }
 }
 
+struct rshift_macro_entry {
+    uint8_t scancode;
+    uint16_t keycode;
+};
+static const struct rshift_macro_entry rshift_macros[] = {
+    { 0xB4, KEY_HOME },
+    { 0xB7, KEY_END },
+    { 0xB5, KEY_PAGEUP },
+    { 0xB6, KEY_PAGEDOWN },
+    { 0, 0 },
+};
+
 static void key_report_event(struct kbd_ctx *ctx,
                              struct key_fifo_item const *ev)
 {
@@ -234,6 +251,95 @@ static void key_report_event(struct kbd_ctx *ctx,
     {
       ctx->mouse_mode = !ctx->mouse_mode;
     }
+    return;
+  }
+
+  if (ev->scancode == 0xA2)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lshift_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lshift_held = 0;
+  }
+
+  if (ev->scancode == 0xA1)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lalt_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lalt_held = 0;
+  }
+  if (ev->scancode == 0xA5)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lctrl_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lctrl_held = 0;
+  }
+
+  /* RSHIFT — function layer */
+  if (ev->scancode == 0xA3) {
+    if (ev->state == KEY_STATE_PRESSED) {
+      ctx->rshift_held = 1;
+      ctx->rshift_used = 0;
+    } else if (ev->state == KEY_STATE_RELEASED) {
+      ctx->rshift_held = 0;
+    }
+    return;
+  }
+
+  if (ctx->rshift_held && (ev->state == KEY_STATE_PRESSED || ev->state == KEY_STATE_HOLD)) {
+    int i;
+    unsigned short keycode;
+    ctx->rshift_used = 1;
+
+    if (!ctx->lshift_held) {
+      for (i = 0; rshift_macros[i].scancode != 0; i++) {
+        if (rshift_macros[i].scancode == ev->scancode) {
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 1);
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 0);
+          return;
+        }
+      }
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
+        if (ev->state == KEY_STATE_PRESSED) {
+          if (ev->scancode == 0x5B) {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          } else {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          }
+        }
+        return;
+      }
+    } else {
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
+        if (ev->state == KEY_STATE_PRESSED) {
+          input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
+          if (ev->scancode == 0x5B) {
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+          } else {
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+          }
+        }
+        return;
+      }
+    }
+
+    keycode = keycodes[ev->scancode];
+    if (keycode == 0 || keycode == KEY_UNKNOWN)
+      return;
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+    input_report_key(ctx->input_dev, keycode, 1);
+    input_report_key(ctx->input_dev, keycode, 0);
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
     return;
   }
 
@@ -306,11 +412,11 @@ static void key_report_event(struct kbd_ctx *ctx,
       return;
     /* KEY_RIGHTBRACE */
     case ']':
-      input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
+      input_report_key(ctx->input_dev, BTN_RIGHT, ev->state == KEY_STATE_PRESSED);
       return;
     /* KEY_LEFTBRACE */
     case '[':
-      input_report_key(ctx->input_dev, BTN_RIGHT, ev->state == KEY_STATE_PRESSED);
+      input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
       return;
     default:
       break;
@@ -392,6 +498,12 @@ if (input_fw_consumes_keycode(ctx, &keycode, keycode, ev->state)
   */
 
   // Report key to input system
+  if (ctx->lshift_held && ev->state == KEY_STATE_PRESSED &&
+      (ev->scancode == 0xb4 || ev->scancode == 0xb5 ||
+       ev->scancode == 0xb6 || ev->scancode == 0xb7))
+  {
+    input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
+  }
   input_report_key(ctx->input_dev, keycode, ev->state == KEY_STATE_PRESSED);
 
   // Reset sticky modifiers
@@ -411,6 +523,25 @@ static void input_workqueue_handler(struct work_struct *work_struct_ptr)
   for (fifo_idx = 0; fifo_idx < ctx->key_fifo_count; fifo_idx++)
   {
     key_report_event(ctx, &ctx->key_fifo_data[fifo_idx]);
+  }
+
+  if (ctx->key_fifo_count == KBD_FIFO_SIZE) {
+    if (ctx->lshift_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 0);
+      ctx->lshift_held = 0;
+    }
+    if (ctx->lalt_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTALT, 0);
+      ctx->lalt_held = 0;
+    }
+    if (ctx->lctrl_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+      ctx->lctrl_held = 0;
+    }
+    if (ctx->rshift_held) {
+      ctx->rshift_held = 0;
+      ctx->rshift_used = 0;
+    }
   }
 
   if (ctx->mouse_mode)
@@ -575,6 +706,11 @@ if ((rc = devm_request_threaded_irq(&i2c_client->dev,
 }
   */
   g_ctx->mouse_mode = FALSE;
+  g_ctx->lshift_held = 0;
+  g_ctx->rshift_held = 0;
+  g_ctx->rshift_used = 0;
+  g_ctx->lalt_held = 0;
+  g_ctx->lctrl_held = 0;
   g_ctx->mouse_move_dir = 0;
   INIT_WORK(&g_ctx->work_struct, input_workqueue_handler);
   g_kbd_timer.expires = jiffies + HZ / 128;
