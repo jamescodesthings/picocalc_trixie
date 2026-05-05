@@ -23,14 +23,16 @@ display (independent, parallel):    6 ──────────────
 ```
 
 ## [ ] Keyboard Driver
-- [ ] **1. Text selection — Left Shift + Arrows**
+- [x] **1. Text selection — Left Shift + Arrows**
   - Goal: LSHIFT+arrow emits Shift+arrow to OS so text selection works in PICO-8 and terminal
   - Problem: currently nothing happens — no shifted arrow event reaches the OS
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c` → `key_report_event()`
-  - [ ] Investigate: does firmware send LSHIFT (0xA2) + arrow (0xB4–0xB7) as separate FIFO events or combined
-  - [ ] If separate: verify driver isn't consuming or dropping the shift event before the arrow arrives
-  - [ ] If combined scancode: add modifier state tracking to `kbd_ctx`, synthesise Shift+arrow
+  - [x] Investigate: does firmware send LSHIFT (0xA2) + arrow (0xB4–0xB7) as separate FIFO events or combined
+  - [x] If separate: verify driver isn't consuming or dropping the shift event before the arrow arrives
+  - [x] If combined scancode: add modifier state tracking to `kbd_ctx`, synthesise Shift+arrow
   - [ ] Test in PICO-8 editor and terminal
+
+  **Task Complete** — Added `lshift_held` flag to `kbd_ctx`. Intercepts 0xA2 to track LSHIFT state (falls through to normal handling). When `lshift_held` and arrow (0xB4–0xB7) pressed, explicitly re-asserts `KEY_LEFTSHIFT` before the arrow event. Root cause: LSHIFT transitions to hold state which early-returns without re-asserting shift to OS. Committed on `feature/keyboard-and-display-improvements`.
 
 - [ ] **2. RSHIFT as function layer / Ctrl key**
   - Right shift (scancode 0xA3 / KEY_RIGHTSHIFT) repurposed as a function layer modifier
