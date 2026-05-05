@@ -25,6 +25,17 @@
   - Replace mouse mode trigger with a different key, or
   - Use RSHIFT-hold as function layer + tap as mouse toggle
 
+### 2b. Fix mouse button mapping (LMB/RMB swapped)
+- **Problem:** `[` fires `BTN_RIGHT` and `]` fires `BTN_LEFT` — backwards. Left bracket should be
+  left click, right bracket should be right click.
+- **Fix:** In `key_report_event()`, swap the two cases:
+  ```c
+  case ']': input_report_key(ctx->input_dev, BTN_RIGHT, ...);  // currently BTN_LEFT — wrong
+  case '[': input_report_key(ctx->input_dev, BTN_LEFT, ...);   // currently BTN_RIGHT — wrong
+  ```
+  Change `]` → `BTN_RIGHT` and `[` → `BTN_LEFT`.
+- **File:** `keyboard/picocalc_kbd/picocalc_kbd.c`, `key_report_event()`, mouse mode section
+
 ### 3. Right Shift + nav key must NOT cause text selection
 - **Goal:** When RSHIFT+key emits HOME/END/PGUP/PGDN, no shift modifier must be in the event stream
 - **Approach:** In `key_report_event()`, when processing these combos, emit only the nav keycode
