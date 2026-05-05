@@ -34,7 +34,7 @@ display (independent, parallel):    6 ──────────────
 
   **Task Complete** — Added `lshift_held` flag to `kbd_ctx`. Intercepts 0xA2 to track LSHIFT state (falls through to normal handling). When `lshift_held` and arrow (0xB4–0xB7) pressed, explicitly re-asserts `KEY_LEFTSHIFT` before the arrow event. Root cause: LSHIFT transitions to hold state which early-returns without re-asserting shift to OS. Committed on `feature/keyboard-and-display-improvements`.
 
-- [ ] **2. RSHIFT as function layer / Ctrl key**
+- [x] **2. RSHIFT as function layer / Ctrl key**
   - Right shift (scancode 0xA3 / KEY_RIGHTSHIFT) repurposed as a function layer modifier
   - When RSHIFT held and another key is pressed:
     1. Check macro table — if RSHIFT+scancode has a defined mapping, emit that keycode with no modifiers
@@ -50,13 +50,15 @@ display (independent, parallel):    6 ──────────────
   - Fall-through examples: RSHIFT+S = Ctrl+S, RSHIFT+Z = Ctrl+Z, LSHIFT+RSHIFT+Z = Ctrl+Shift+Z
   - LSHIFT+RSHIFT+arrows = Ctrl+Shift+arrows (word-select / jump)
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c`
-  - [ ] Add `rshift_held` and `rshift_used` flags to `kbd_ctx`
-  - [ ] Add static macro table (scancode/keycode pairs, zero-terminated)
-  - [ ] Intercept 0xA3 in `key_report_event()`: set/clear `rshift_held` on press/release; return without emitting shift
-  - [ ] On any key press while `rshift_held`: macro lookup → emit nav key, OR synthesise CTRL+(SHIFT+)key; set `rshift_used`
+  - [x] Add `rshift_held` and `rshift_used` flags to `kbd_ctx`
+  - [x] Add static macro table (scancode/keycode pairs, zero-terminated)
+  - [x] Intercept 0xA3 in `key_report_event()`: set/clear `rshift_held` on press/release; return without emitting shift
+  - [x] On any key press while `rshift_held`: macro lookup → emit nav key, OR synthesise CTRL+(SHIFT+)key; set `rshift_used`
   - [ ] Test: RSHIFT+S = Ctrl+S, RSHIFT+arrows = HOME/END/PGUP/PGDN, LSHIFT+RSHIFT+S = Ctrl+Shift+S
   - [ ] Test: LSHIFT+RSHIFT+arrows = Ctrl+Shift+arrows
   - [ ] Confirm no shift event leaks when using RSHIFT combos
+
+  **Task Complete** — Added `rshift_held`/`rshift_used` to `kbd_ctx`, static `rshift_macros[]` table (arrows→HOME/END/PGUP/PGDN), RSHIFT interception (never emits KEY_RIGHTSHIFT), and combo handling (macro lookup or CTRL synthesis; LSHIFT+RSHIFT skips macro table, CTRL+key with OS SHIFT already held = CTRL+SHIFT+key). Fixed `unsigned short keycode` shadow in combo block. Docs updated. Tests pending on-device.
 
 - [x] **2b. Fix mouse button mapping (LMB/RMB swapped)**
   - Independent, one-line fix
