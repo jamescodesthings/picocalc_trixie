@@ -273,7 +273,7 @@ static void key_report_event(struct kbd_ctx *ctx,
 
   if (ctx->rshift_held && ev->state == KEY_STATE_PRESSED) {
     int i;
-    uint8_t keycode;
+    unsigned short keycode;
     ctx->rshift_used = 1;
 
     if (!ctx->lshift_held) {
