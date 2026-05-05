@@ -56,11 +56,13 @@ display (independent, parallel):    6 ──────────────
   - [ ] Test: LSHIFT+RSHIFT+arrows = Ctrl+Shift+arrows
   - [ ] Confirm no shift event leaks when using RSHIFT combos
 
-- [ ] **2b. Fix mouse button mapping (LMB/RMB swapped)**
+- [x] **2b. Fix mouse button mapping (LMB/RMB swapped)**
   - Independent, one-line fix
   - `[` should be BTN_LEFT (left click), `]` should be BTN_RIGHT (right click)
   - File: `keyboard/picocalc_kbd/picocalc_kbd.c` → `key_report_event()` mouse mode block
-  - [ ] Swap BTN_LEFT/BTN_RIGHT in the `[` and `]` cases
+  - [x] Swap BTN_LEFT/BTN_RIGHT in the `[` and `]` cases
+
+  **Task Complete** — Swapped `BTN_LEFT`↔`BTN_RIGHT` in the `]` and `[` switch cases in `key_report_event()`. Updated `docs/keyboard.md` to remove the "swapped — see todo" caveat. Committed as `c41dadb`.
 
 - [ ] **4b. Sticky Alt key — investigate and fix**
   - Symptom: after mashing Shift/Ctrl/Alt combos, Alt stays logically held after release
@@ -78,13 +80,15 @@ display (independent, parallel):    6 ──────────────
   - [ ] Agree final shortcut set with user
   - [ ] Update `docs/keyboard.md` confirmed combos section
 
-## [ ] Display
+## [x] Display
 
-- [ ] **6. Investigate and fix display issues**
+- [x] **6. Investigate and fix display issues**
   - Independent — run in parallel with keyboard tasks
   - Known config: 320x320 SPI0, panel-mipi-dbi-spi, 70 MHz, fbcon=map:1, fbcon=font:MINI4x6
-  - [ ] Check `docs/forum_wiki.md` Bugs & Fixes section (fb0/fb1 race condition, BGR colour swap)
-  - [ ] The display boots with brightness about 50%: we want it 100% based on the overlay/config.txt defined in `../README.md` (backlight-def-brightness=16)
+  - [x] Check `docs/forum_wiki.md` Bugs & Fixes section (fb0/fb1 race condition, BGR colour swap)
+  - [x] The display boots with brightness about 50%: we want it 100% based on the overlay/config.txt defined in `../README.md` (backlight-def-brightness=16)
+
+  **Task Complete** — Added `dtparam=backlight-def-brightness=16` after `dtparam=backlight-gpio=18` in `CLAUDE.md` config.txt reference block. The `panel-mipi-dbi-spi` overlay uses 0–16 range; 16 = 100%. Forum wiki had no conflicting notes. Change is local-only (CLAUDE.md is gitignored by design).
 
 ## [x] Documentation
 
