@@ -77,6 +77,8 @@ struct kbd_ctx
 
   int mouse_mode;
   int lshift_held;
+  int rshift_held;
+  int rshift_used;
   uint8_t mouse_move_dir;
 };
 
@@ -216,6 +218,18 @@ if (kbd_read_i2c_u8(ctx->i2c_client, REG_KEY, &ctx->key_fifo_count)) {
   }
 }
 
+struct rshift_macro_entry {
+    uint8_t scancode;
+    uint16_t keycode;
+};
+static const struct rshift_macro_entry rshift_macros[] = {
+    { 0xB4, KEY_HOME },
+    { 0xB7, KEY_END },
+    { 0xB5, KEY_PAGEUP },
+    { 0xB6, KEY_PAGEDOWN },
+    { 0, 0 },
+};
+
 static void key_report_event(struct kbd_ctx *ctx,
                              struct key_fifo_item const *ev)
 {
@@ -244,6 +258,42 @@ static void key_report_event(struct kbd_ctx *ctx,
       ctx->lshift_held = 1;
     else if (ev->state == KEY_STATE_RELEASED)
       ctx->lshift_held = 0;
+  }
+
+  /* RSHIFT — function layer */
+  if (ev->scancode == 0xA3) {
+    if (ev->state == KEY_STATE_PRESSED) {
+      ctx->rshift_held = 1;
+      ctx->rshift_used = 0;
+    } else if (ev->state == KEY_STATE_RELEASED) {
+      ctx->rshift_held = 0;
+    }
+    return;
+  }
+
+  if (ctx->rshift_held && ev->state == KEY_STATE_PRESSED) {
+    int i;
+    uint8_t keycode;
+    ctx->rshift_used = 1;
+
+    if (!ctx->lshift_held) {
+      for (i = 0; rshift_macros[i].scancode != 0; i++) {
+        if (rshift_macros[i].scancode == ev->scancode) {
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 1);
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 0);
+          return;
+        }
+      }
+    }
+
+    keycode = keycodes[ev->scancode];
+    if (keycode == 0 || keycode == KEY_UNKNOWN)
+      return;
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+    input_report_key(ctx->input_dev, keycode, 1);
+    input_report_key(ctx->input_dev, keycode, 0);
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+    return;
   }
 
   if (ctx->mouse_mode)
@@ -591,6 +641,8 @@ if ((rc = devm_request_threaded_irq(&i2c_client->dev,
   */
   g_ctx->mouse_mode = FALSE;
   g_ctx->lshift_held = 0;
+  g_ctx->rshift_held = 0;
+  g_ctx->rshift_used = 0;
   g_ctx->mouse_move_dir = 0;
   INIT_WORK(&g_ctx->work_struct, input_workqueue_handler);
   g_kbd_timer.expires = jiffies + HZ / 128;
