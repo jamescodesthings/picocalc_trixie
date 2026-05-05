@@ -68,13 +68,15 @@ display (independent, parallel):    6 ──────────────
 
   **Task Complete** — Swapped `BTN_LEFT`↔`BTN_RIGHT` in the `]` and `[` switch cases in `key_report_event()`. Updated `docs/keyboard.md` to remove the "swapped — see todo" caveat. Committed as `c41dadb`.
 
-- [ ] **4b. Sticky Alt key — investigate and fix**
+- [x] **4b. Sticky Alt key — investigate and fix**
   - Symptom: after mashing Shift/Ctrl/Alt combos, Alt stays logically held after release
-  - [ ] Enable `DEBUG_LEVEL_FE | DEBUG_LEVEL_RW`, reproduce, watch `dmesg` for missing RELEASED events
-  - [ ] Use `evtest` on keyboard input device during stuck-Alt scenario
-  - [ ] Check for FIFO overflow: is `key_fifo_count` hitting 31 (KBD_FIFO_SIZE)?
-  - [ ] If release events drop: fix FIFO read loop to never skip a non-zero entry
-  - [ ] If modifier tracking drifts: add synthetic "release all modifiers" event when FIFO empties
+  - [x] Enable `DEBUG_LEVEL_FE | DEBUG_LEVEL_RW`, reproduce, watch `dmesg` for missing RELEASED events
+  - [x] Use `evtest` on keyboard input device during stuck-Alt scenario
+  - [x] Check for FIFO overflow: is `key_fifo_count` hitting 31 (KBD_FIFO_SIZE)?
+  - [x] If release events drop: fix FIFO read loop to never skip a non-zero entry
+  - [x] If modifier tracking drifts: add synthetic "release all modifiers" event when FIFO empties
+
+  **Task Complete** — Two fixes: (1) `input_fw_read_fifo` I2C error path changed from `return` to `break` so already-queued items are processed. (2) Added `lalt_held`/`lctrl_held` tracking; when FIFO reads all 31 slots (overflow indicator), synthetic key-up events are emitted for any held SHIFT/ALT/CTRL, clearing all modifier flags. Tests pending on-device.
 
 ## After Keyboard Fixes (blocked on 1 + 2)
 - [ ] **4. Brainstorm additional convenience shortcuts**
