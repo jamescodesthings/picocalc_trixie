@@ -13,12 +13,12 @@ Alt+key function to control hardware (brightness, etc.).
 **D-pad** (top left) — 4-way directional cross
 
 **Top function row** (to the right of the d-pad, above the rest of the keyboard) — F1–F5, with
-Shift+F1–F5 = F6–F10. Pressing F5 toggles mouse mode: arrows move the cursor, `]` = LMB, `[` = RMB.
+Shift+F1–F5 = F6–F10. Pressing F5 toggles mouse mode: arrows move the cursor, `[` = LMB, `]` = RMB.
 
 **Esc/Backspace row** — Esc/Brk, Tab/Home, CapsLock, Del/End, Backspace
 
 **Backtick row** — `` ` ``/`~`, `/`/`?`, `\`/`|`, `-`/`_`, `=`/`+`, `[`/`{`, `]`/`}`. In mouse
-mode `[` = LMB and `]` = RMB. (Note: driver currently has these swapped — see todo.)
+mode `[` = LMB and `]` = RMB.
 
 **Numbers row** — `1`–`0` with Shift giving `!@#$%^&*()`
 
@@ -73,7 +73,7 @@ Activated by pressing F5.
 In this mode:
 
 - the arrow keys emit relative mouse movements instead of arrow key events
--  `]`/`[` emit left/right mouse clicks instead of their normal key events
+- `[`/`]` emit left/right mouse clicks instead of their normal key events
 - Pressing F5 again exits mouse mode.
 
 ## Macros
@@ -141,8 +141,8 @@ Resets `ctx->key_fifo_count` to 0. Loops up to 31 times calling `kbd_read_i2c_2u
 3. If `mouse_mode`:
    - Arrow scancodes (0xB4–0xB7): set/clear bits in `ctx->mouse_move_dir`; reset `last_keypress_at`
      when a direction is first activated.
-   - `]` (0x5D): emits `BTN_LEFT` press/release.
-   - `[` (0x5B): emits `BTN_RIGHT` press/release.
+   - `[` (0x5B): emits `BTN_LEFT` press/release.
+   - `]` (0x5D): emits `BTN_RIGHT` press/release.
    - All other scancodes fall through to normal key handling below.
 4. Posts `EV_MSC / MSC_SCAN` with raw scancode.
 5. Looks up `keycodes[scancode]`. Skips if 0 or `KEY_UNKNOWN`.

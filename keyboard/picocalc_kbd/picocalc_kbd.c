@@ -306,11 +306,11 @@ static void key_report_event(struct kbd_ctx *ctx,
       return;
     /* KEY_RIGHTBRACE */
     case ']':
-      input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
+      input_report_key(ctx->input_dev, BTN_RIGHT, ev->state == KEY_STATE_PRESSED);
       return;
     /* KEY_LEFTBRACE */
     case '[':
-      input_report_key(ctx->input_dev, BTN_RIGHT, ev->state == KEY_STATE_PRESSED);
+      input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
       return;
     default:
       break;
