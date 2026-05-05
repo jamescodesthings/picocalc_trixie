@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Installing or updating 'i2c-tools'" package
+sudo apt install -y i2c-tools
+
 sudo cp ./picopoweroff.service /usr/lib/systemd/system/
 if [ $? -eq 0 ]; then
   echo "Poweroff service copied successfully!"
