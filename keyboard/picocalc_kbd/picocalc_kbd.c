@@ -301,36 +301,35 @@ static void key_report_event(struct kbd_ctx *ctx,
           return;
         }
       }
-      if (ev->state == KEY_STATE_PRESSED) {
-        if (ev->scancode == 0x5B) {
-          input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
-          input_report_key(ctx->input_dev, KEY_HOME, 1);
-          input_report_key(ctx->input_dev, KEY_HOME, 0);
-          input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
-          return;
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
+        if (ev->state == KEY_STATE_PRESSED) {
+          if (ev->scancode == 0x5B) {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          } else {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          }
         }
-        if (ev->scancode == 0x5D) {
-          input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
-          input_report_key(ctx->input_dev, KEY_END, 1);
-          input_report_key(ctx->input_dev, KEY_END, 0);
-          input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
-          return;
-        }
+        return;
       }
     } else {
-      if (ev->state == KEY_STATE_PRESSED) {
-        if (ev->scancode == 0x5B) {
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
+        if (ev->state == KEY_STATE_PRESSED) {
           input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
-          input_report_key(ctx->input_dev, KEY_HOME, 1);
-          input_report_key(ctx->input_dev, KEY_HOME, 0);
-          return;
+          if (ev->scancode == 0x5B) {
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+          } else {
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+          }
         }
-        if (ev->scancode == 0x5D) {
-          input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
-          input_report_key(ctx->input_dev, KEY_END, 1);
-          input_report_key(ctx->input_dev, KEY_END, 0);
-          return;
-        }
+        return;
       }
     }
 
