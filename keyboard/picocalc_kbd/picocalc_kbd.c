@@ -76,6 +76,7 @@ struct kbd_ctx
   uint64_t last_keypress_at;
 
   int mouse_mode;
+  int lshift_held;
   uint8_t mouse_move_dir;
 };
 
@@ -237,6 +238,14 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
+  if (ev->scancode == 0xA2)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lshift_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lshift_held = 0;
+  }
+
   if (ctx->mouse_mode)
   {
     switch (ev->scancode)
@@ -392,6 +401,12 @@ if (input_fw_consumes_keycode(ctx, &keycode, keycode, ev->state)
   */
 
   // Report key to input system
+  if (ctx->lshift_held && ev->state == KEY_STATE_PRESSED &&
+      (ev->scancode == 0xb4 || ev->scancode == 0xb5 ||
+       ev->scancode == 0xb6 || ev->scancode == 0xb7))
+  {
+    input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
+  }
   input_report_key(ctx->input_dev, keycode, ev->state == KEY_STATE_PRESSED);
 
   // Reset sticky modifiers
@@ -575,6 +590,7 @@ if ((rc = devm_request_threaded_irq(&i2c_client->dev,
 }
   */
   g_ctx->mouse_mode = FALSE;
+  g_ctx->lshift_held = 0;
   g_ctx->mouse_move_dir = 0;
   INIT_WORK(&g_ctx->work_struct, input_workqueue_handler);
   g_kbd_timer.expires = jiffies + HZ / 128;
