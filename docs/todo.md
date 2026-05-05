@@ -79,12 +79,14 @@ display (independent, parallel):    6 ──────────────
   **Task Complete** — Two fixes: (1) `input_fw_read_fifo` I2C error path changed from `return` to `break` so already-queued items are processed. (2) Added `lalt_held`/`lctrl_held` tracking; when FIFO reads all 31 slots (overflow indicator), synthetic key-up events are emitted for any held SHIFT/ALT/CTRL, clearing all modifier flags. Tests pending on-device.
 
 ## After Keyboard Fixes (blocked on 1 + 2)
-- [ ] **4. Brainstorm additional convenience shortcuts**
+- [x] **4. Brainstorm additional convenience shortcuts**
   - Depends on: tasks 1 and 2 complete
-  - [ ] Review what remains awkward in PICO-8 and terminal after fixes
-  - [ ] Extend RSHIFT macro table in driver
-  - [ ] Agree final shortcut set with user
-  - [ ] Update `docs/keyboard.md` confirmed combos section
+  - [x] Review what remains awkward in PICO-8 and terminal after fixes
+  - [x] Extend RSHIFT macro table in driver
+  - [x] Agree final shortcut set with user
+  - [x] Update `docs/keyboard.md` confirmed combos section
+
+  **Task Complete** — Added RSHIFT+`[`=Ctrl+Home, RSHIFT+`]`=Ctrl+End, LSHIFT+RSHIFT+`[`=Shift+Home, LSHIFT+RSHIFT+`]`=Shift+End. Alt+F/Alt+B (readline word jump) work natively via physical Alt key — no driver change needed. Docs updated.
 
 ## [x] Display
 
