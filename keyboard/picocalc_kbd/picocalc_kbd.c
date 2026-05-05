@@ -288,7 +288,7 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
-  if (ctx->rshift_held && ev->state == KEY_STATE_PRESSED) {
+  if (ctx->rshift_held && (ev->state == KEY_STATE_PRESSED || ev->state == KEY_STATE_HOLD)) {
     int i;
     unsigned short keycode;
     ctx->rshift_used = 1;
