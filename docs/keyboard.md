@@ -90,8 +90,14 @@ In this mode:
 | RSHIFT + ↑ | Page Up |
 | RSHIFT + ↓ | Page Down |
 | RSHIFT + key | Ctrl+key |
+| RSHIFT + `[` | Ctrl+Home (file/buffer start) |
+| RSHIFT + `]` | Ctrl+End (file/buffer end) |
 | LSHIFT + RSHIFT + key | Ctrl+Shift+key |
 | LSHIFT + RSHIFT + arrow | Ctrl+Shift+arrow (word-select) |
+| LSHIFT + RSHIFT + `[` | Shift+Home (select to line start) |
+| LSHIFT + RSHIFT + `]` | Shift+End (select to line end) |
+
+> Alt+F / Alt+B — word jump forward/backward in readline — works natively via physical Alt key, no driver change needed.
 
 ## Driver Architecture
 
@@ -153,11 +159,14 @@ Resets `ctx->key_fifo_count` to 0. Loops up to 31 times calling `kbd_read_i2c_2u
     KEY_LEFTCTRL is still emitted.
 4. Scancode `0xA3` (RSHIFT): sets `ctx->rshift_held = 1` and `ctx->rshift_used = 0` on press;
    clears `ctx->rshift_held` on release; returns immediately — KEY_RIGHTSHIFT is never emitted.
-5. If `ctx->rshift_held` and event is a press:
+5. If `ctx->rshift_held` and event is a press or hold:
    - Sets `ctx->rshift_used = 1`.
    - If `lshift_held` is 0: checks `rshift_macros[]` table; if scancode matches, emits the mapped
-     nav key (press+release) and returns.
-   - Fallthrough (no macro match, or lshift held): looks up `keycodes[scancode]`; if valid, emits
+     nav key (press+release) and returns. Then (on press only) checks for `[` (0x5B) and `]` (0x5D):
+     emits Ctrl+Home or Ctrl+End respectively and returns.
+   - If `lshift_held` is 1: on press only, checks for `[` (0x5B) and `]` (0x5D); re-asserts
+     KEY_LEFTSHIFT then emits Home or End respectively and returns (Shift+Home / Shift+End).
+   - Fallthrough (no special match): looks up `keycodes[scancode]`; if valid, emits
      KEY_LEFTCTRL down, key down/up, KEY_LEFTCTRL up, then returns. With lshift_held the OS already
      has KEY_LEFTSHIFT held, so the result is Ctrl+Shift+key.
 6. If `mouse_mode`:
