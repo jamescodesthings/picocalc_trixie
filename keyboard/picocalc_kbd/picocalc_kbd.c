@@ -262,13 +262,19 @@ static void key_report_event(struct kbd_ctx *ctx,
       ctx->lshift_held = 0;
   }
 
-  if (ev->scancode == 0xA1) {
-    if (ev->state == KEY_STATE_PRESSED) ctx->lalt_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED) ctx->lalt_held = 0;
+  if (ev->scancode == 0xA1)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lalt_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lalt_held = 0;
   }
-  if (ev->scancode == 0xA5) {
-    if (ev->state == KEY_STATE_PRESSED) ctx->lctrl_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED) ctx->lctrl_held = 0;
+  if (ev->scancode == 0xA5)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lctrl_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lctrl_held = 0;
   }
 
   /* RSHIFT — function layer */
