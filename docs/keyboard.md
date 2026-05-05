@@ -147,6 +147,10 @@ Resets `ctx->key_fifo_count` to 0. Loops up to 31 times calling `kbd_read_i2c_2u
 2. Scancode `0x85`: flips `ctx->mouse_mode` on press, returns — nothing emitted to OS.
 3. Scancode `0xA2` (LSHIFT): sets/clears `ctx->lshift_held` on press/release; falls through to
    normal processing so KEY_LEFTSHIFT is still emitted.
+3a. Scancode `0xA1` (ALT): sets/clears `ctx->lalt_held` on press/release; falls through so
+    KEY_LEFTALT is still emitted.
+3b. Scancode `0xA5` (CTRL): sets/clears `ctx->lctrl_held` on press/release; falls through so
+    KEY_LEFTCTRL is still emitted.
 4. Scancode `0xA3` (RSHIFT): sets `ctx->rshift_held = 1` and `ctx->rshift_used = 0` on press;
    clears `ctx->rshift_held` on release; returns immediately — KEY_RIGHTSHIFT is never emitted.
 5. If `ctx->rshift_held` and event is a press:
@@ -172,9 +176,12 @@ Resets `ctx->key_fifo_count` to 0. Loops up to 31 times calling `kbd_read_i2c_2u
 
 **`input_workqueue_handler(work)`**
 Retrieves `ctx` via `container_of`. Calls `input_fw_read_fifo`, then `key_report_event` for each
-FIFO item. If `mouse_mode` is active, calculates `mouse_move_step` (1/2/4 pixels) from time elapsed
-since `last_keypress_at` (≤150 ms → 1, ≤450 ms → 2, >450 ms → 4), then emits `REL_X`/`REL_Y` for
-each active direction bit. Resets `key_fifo_count` to 0. Calls `input_sync`.
+FIFO item. If `key_fifo_count == KBD_FIFO_SIZE` after processing (potential FIFO overflow), emits
+synthetic key-up events for any held modifiers (`lshift_held`, `lalt_held`, `lctrl_held`) and resets
+`rshift_held`/`rshift_used`, preventing stuck modifiers when release events are lost. If `mouse_mode`
+is active, calculates `mouse_move_step` (1/2/4 pixels) from time elapsed since `last_keypress_at`
+(≤150 ms → 1, ≤450 ms → 2, >450 ms → 4), then emits `REL_X`/`REL_Y` for each active direction bit.
+Resets `key_fifo_count` to 0. Calls `input_sync`.
 
 **`kbd_timer_function(data)`**
 Reschedules itself for `jiffies + HZ/128`. Calls `schedule_work` on the global context's work struct.

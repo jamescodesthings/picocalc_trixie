@@ -79,6 +79,8 @@ struct kbd_ctx
   int lshift_held;
   int rshift_held;
   int rshift_used;
+  int lalt_held;
+  int lctrl_held;
   uint8_t mouse_move_dir;
 };
 
@@ -187,7 +189,7 @@ if (kbd_read_i2c_u8(ctx->i2c_client, REG_KEY, &ctx->key_fifo_count)) {
 
       dev_err(&ctx->i2c_client->dev,
               "%s Could not read REG_FIF, Error: %d\n", __func__, rc);
-      return;
+      break;
     }
 
     if (data[0] == 0)
@@ -258,6 +260,15 @@ static void key_report_event(struct kbd_ctx *ctx,
       ctx->lshift_held = 1;
     else if (ev->state == KEY_STATE_RELEASED)
       ctx->lshift_held = 0;
+  }
+
+  if (ev->scancode == 0xA1) {
+    if (ev->state == KEY_STATE_PRESSED) ctx->lalt_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED) ctx->lalt_held = 0;
+  }
+  if (ev->scancode == 0xA5) {
+    if (ev->state == KEY_STATE_PRESSED) ctx->lctrl_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED) ctx->lctrl_held = 0;
   }
 
   /* RSHIFT — function layer */
@@ -478,6 +489,25 @@ static void input_workqueue_handler(struct work_struct *work_struct_ptr)
     key_report_event(ctx, &ctx->key_fifo_data[fifo_idx]);
   }
 
+  if (ctx->key_fifo_count == KBD_FIFO_SIZE) {
+    if (ctx->lshift_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 0);
+      ctx->lshift_held = 0;
+    }
+    if (ctx->lalt_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTALT, 0);
+      ctx->lalt_held = 0;
+    }
+    if (ctx->lctrl_held) {
+      input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+      ctx->lctrl_held = 0;
+    }
+    if (ctx->rshift_held) {
+      ctx->rshift_held = 0;
+      ctx->rshift_used = 0;
+    }
+  }
+
   if (ctx->mouse_mode)
   {
     uint64_t press_time = ktime_get_boottime_ns() - ctx->last_keypress_at;
@@ -643,6 +673,8 @@ if ((rc = devm_request_threaded_irq(&i2c_client->dev,
   g_ctx->lshift_held = 0;
   g_ctx->rshift_held = 0;
   g_ctx->rshift_used = 0;
+  g_ctx->lalt_held = 0;
+  g_ctx->lctrl_held = 0;
   g_ctx->mouse_move_dir = 0;
   INIT_WORK(&g_ctx->work_struct, input_workqueue_handler);
   g_kbd_timer.expires = jiffies + HZ / 128;
