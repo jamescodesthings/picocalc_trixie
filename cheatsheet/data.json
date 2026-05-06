@@ -79,7 +79,7 @@
   {"type":"api","signature":"fillp([pat])","description":"Set fill pattern","category":"API: Graphics"},
 
   {"type":"api","signature":"spr(n,x,y,[w,h],[fx],[fy])","description":"Draw sprite n at (x,y); w,h in tiles; fx,fy flip","category":"API: Sprites"},
-  {"type":"api","signature":"sspr(sx,sy,sw,sh,dx,dy,[dw,dh],[fx],[fy])","description":"Stretch blit from sprite sheet","category":"API: Sprites"},
+  {"type":"api","signature":"sspr(sx,sy,sw,sh,dx,dy,[dw,dh,fx,fy])","description":"Stretch blit from sprite sheet","category":"API: Sprites"},
 
   {"type":"api","signature":"map(mx,my,sx,sy,w,h,[layer])","description":"Draw map region to screen","category":"API: Map"},
   {"type":"api","signature":"mget(x,y)","description":"Get tile at map cell","category":"API: Map"},

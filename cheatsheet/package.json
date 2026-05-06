@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG=cheatsheet:* node index",
-    "dev": "nodemon --watch . --ext js,json,ejs,css --exec 'DEBUG=cheatsheet:* node index'"
+    "dev": "node dev.js"
   },
   "dependencies": {
     "debug": "^4.3.4",
