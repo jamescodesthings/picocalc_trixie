@@ -7,6 +7,14 @@
 @font-face {
   font-family: 'DejaVu Sans Mono';
   src: url('fonts/DejaVuSansMono.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  src: url('fonts/DejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
   font-display: swap;
 }
 
