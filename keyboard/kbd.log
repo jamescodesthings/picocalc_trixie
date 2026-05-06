@@ -1,320 +1,370 @@
-[May 6 13:07] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1073 State 1 Scancode 115
-[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 115 mapped to keycode 31
-[  +0.063447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3073 State 3 Scancode 115
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 115 mapped to keycode 31
-[  +0.135429] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1075 State 1 Scancode 117
-[  +0.000552] picocalc_kbd 1-001f: key_report_event state 1, scancode 117 mapped to keycode 22
-[  +0.055520] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3075 State 3 Scancode 117
-[  +0.000572] picocalc_kbd 1-001f: key_report_event state 3, scancode 117 mapped to keycode 22
-[  +0.087389] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1064 State 1 Scancode 100
-[  +0.000573] picocalc_kbd 1-001f: key_report_event state 1, scancode 100 mapped to keycode 32
-[  +0.111402] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106f State 1 Scancode 111
-[  +0.000555] picocalc_kbd 1-001f: input_fw_read_fifo 01: 0x3064 State 3 Scancode 100
-[  +0.000552] picocalc_kbd 1-001f: key_report_event state 1, scancode 111 mapped to keycode 24
-[  +0.000016] picocalc_kbd 1-001f: key_report_event state 3, scancode 100 mapped to keycode 32
-[  +0.078872] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306f State 3 Scancode 111
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 111 mapped to keycode 24
-[  +0.207431] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.135446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +0.159436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1073 State 1 Scancode 115
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 115 mapped to keycode 31
-[  +0.103452] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3073 State 3 Scancode 115
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 115 mapped to keycode 31
-[  +0.439426] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106d State 1 Scancode 109
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 109 mapped to keycode 50
-[  +0.095450] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306d State 3 Scancode 109
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 3, scancode 109 mapped to keycode 50
-[  +0.159434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1065 State 1 Scancode 101
-[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 101 mapped to keycode 18
-[  +0.103454] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3065 State 3 Scancode 101
-[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 101 mapped to keycode 18
-[  +1.959431] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000567] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.095407] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +0.063436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000553] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.055442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +0.319444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1064 State 1 Scancode 100
-[  +0.000560] picocalc_kbd 1-001f: key_report_event state 1, scancode 100 mapped to keycode 32
-[  +0.063498] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3064 State 3 Scancode 100
-[  +0.000561] picocalc_kbd 1-001f: key_report_event state 3, scancode 100 mapped to keycode 32
-[  +0.879374] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.079463] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000583] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +0.055416] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000573] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.083432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +0.039414] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1064 State 1 Scancode 100
-[  +0.000567] picocalc_kbd 1-001f: key_report_event state 1, scancode 100 mapped to keycode 32
-[  +0.059430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3064 State 3 Scancode 100
-[  +0.000579] picocalc_kbd 1-001f: key_report_event state 3, scancode 100 mapped to keycode 32
-[  +0.835433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106d State 1 Scancode 109
-[  +0.000577] picocalc_kbd 1-001f: key_report_event state 1, scancode 109 mapped to keycode 50
-[  +0.163416] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306d State 3 Scancode 109
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 3, scancode 109 mapped to keycode 50
-[  +0.039412] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1065 State 1 Scancode 101
-[  +0.000575] picocalc_kbd 1-001f: key_report_event state 1, scancode 101 mapped to keycode 18
-[  +0.095437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3065 State 3 Scancode 101
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 3, scancode 101 mapped to keycode 18
-[  +0.223425] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1073 State 1 Scancode 115
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 1, scancode 115 mapped to keycode 31
-[  +0.095406] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3073 State 3 Scancode 115
-[  +0.000573] picocalc_kbd 1-001f: key_report_event state 3, scancode 115 mapped to keycode 31
-[  +0.679437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1067 State 1 Scancode 103
-[  +0.000577] picocalc_kbd 1-001f: key_report_event state 1, scancode 103 mapped to keycode 34
-[  +0.099393] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3067 State 3 Scancode 103
-[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 103 mapped to keycode 34
-[  +0.223427] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.155452] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000571] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +2.583415] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x102d State 1 Scancode 45
-[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 45 mapped to keycode 12
-[  +0.055440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x302d State 3 Scancode 45
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 45 mapped to keycode 12
-[  +0.363435] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1077 State 1 Scancode 119
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 119 mapped to keycode 17
-[  +0.079488] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3077 State 3 Scancode 119
-[  +0.000566] picocalc_kbd 1-001f: key_report_event state 3, scancode 119 mapped to keycode 17
-[  +1.703399] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
-[  +0.159433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1048 State 1 Scancode 72
-[  +0.000577] picocalc_kbd 1-001f: key_report_event state 1, scancode 72 mapped to keycode 35
-[  +0.075412] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3048 State 3 Scancode 72
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 3, scancode 72 mapped to keycode 35
-[  +0.083430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
-[  +0.015418] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
-[  +0.343451] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000577] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.119415] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000571] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +2.519427] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1067 State 1 Scancode 103
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 1, scancode 103 mapped to keycode 34
-[  +0.119393] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3067 State 3 Scancode 103
-[  +0.000569] picocalc_kbd 1-001f: key_report_event state 3, scancode 103 mapped to keycode 34
-[  +0.159435] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1072 State 1 Scancode 114
-[  +0.000571] picocalc_kbd 1-001f: key_report_event state 1, scancode 114 mapped to keycode 19
-[  +0.055429] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3072 State 3 Scancode 114
-[  +0.000561] picocalc_kbd 1-001f: key_report_event state 3, scancode 114 mapped to keycode 19
-[  +0.423431] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1065 State 1 Scancode 101
-[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 101 mapped to keycode 18
-[  +0.119449] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3065 State 3 Scancode 101
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 101 mapped to keycode 18
-[  +0.515423] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1070 State 1 Scancode 112
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 1, scancode 112 mapped to keycode 25
-[  +0.079438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3070 State 3 Scancode 112
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 112 mapped to keycode 25
-[  +0.223425] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.095443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000560] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +0.223439] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1070 State 1 Scancode 112
-[  +0.000562] picocalc_kbd 1-001f: key_report_event state 1, scancode 112 mapped to keycode 25
-[  +0.095442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3070 State 3 Scancode 112
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 112 mapped to keycode 25
-[  +0.119430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1069 State 1 Scancode 105
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 105 mapped to keycode 23
-[  +0.103447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3069 State 3 Scancode 105
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 105 mapped to keycode 23
-[  +0.159432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1063 State 1 Scancode 99
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 99 mapped to keycode 46
-[  +0.099427] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3063 State 3 Scancode 99
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 3, scancode 99 mapped to keycode 46
-[  +0.015446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106f State 1 Scancode 111
-[  +0.000552] picocalc_kbd 1-001f: key_report_event state 1, scancode 111 mapped to keycode 24
-[  +0.039499] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306f State 3 Scancode 111
-[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 111 mapped to keycode 24
-[  +0.119375] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1063 State 1 Scancode 99
-[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 99 mapped to keycode 46
-[  +0.103447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3063 State 3 Scancode 99
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 99 mapped to keycode 46
-[  +0.175432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1061 State 1 Scancode 97
-[  +0.000554] picocalc_kbd 1-001f: key_report_event state 1, scancode 97 mapped to keycode 30
-[  +0.079450] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3061 State 3 Scancode 97
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 97 mapped to keycode 30
-[  +0.063430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106c State 1 Scancode 108
-[  +0.000560] picocalc_kbd 1-001f: key_report_event state 1, scancode 108 mapped to keycode 38
-[  +0.095448] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306c State 3 Scancode 108
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 108 mapped to keycode 38
-[  +0.839420] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1063 State 1 Scancode 99
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 99 mapped to keycode 46
-[  +0.099445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3063 State 3 Scancode 99
-[  +0.000558] picocalc_kbd 1-001f: key_report_event state 3, scancode 99 mapped to keycode 46
-[  +0.767432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x107a State 1 Scancode 122
-[  +0.000568] picocalc_kbd 1-001f: key_report_event state 1, scancode 122 mapped to keycode 44
-[  +0.135468] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x102d State 1 Scancode 45
-[  +0.000585] picocalc_kbd 1-001f: key_report_event state 1, scancode 45 mapped to keycode 12
-[  +0.119411] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x302d State 3 Scancode 45
-[  +0.000577] picocalc_kbd 1-001f: key_report_event state 3, scancode 45 mapped to keycode 12
-[  +0.063404] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x107a State 1 Scancode 122
-[  +0.000572] picocalc_kbd 1-001f: key_report_event state 1, scancode 122 mapped to keycode 44
-[  +0.015426] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x307a State 3 Scancode 122
-[  +0.000566] picocalc_kbd 1-001f: key_report_event state 3, scancode 122 mapped to keycode 44
-[  +1.079436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000584] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.055467] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000587] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +0.083332] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
-[  +0.059432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
-[  +1.299428] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
-[  +0.119431] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x105f State 1 Scancode 95
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 95 mapped to keycode 12
-[  +0.103450] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x305f State 3 Scancode 95
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 95 mapped to keycode 12
-[  +0.095432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
-[  +0.000562] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
-[  +0.023438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
-[  +0.000550] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
-[  +0.999443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106b State 1 Scancode 107
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 1, scancode 107 mapped to keycode 37
-[  +0.019540] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306b State 3 Scancode 107
-[  +0.000605] picocalc_kbd 1-001f: key_report_event state 3, scancode 107 mapped to keycode 37
-[  +0.339286] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1062 State 1 Scancode 98
-[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 98 mapped to keycode 48
-[  +0.115442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3062 State 3 Scancode 98
-[  +0.000566] picocalc_kbd 1-001f: key_report_event state 3, scancode 98 mapped to keycode 48
-[  +1.183421] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1064 State 1 Scancode 100
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 100 mapped to keycode 32
-[  +0.115429] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3064 State 3 Scancode 100
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 100 mapped to keycode 32
-[  +0.039438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000553] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.119451] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000566] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +5.143403] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
-[  +0.000573] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
-[  +0.143433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x103e State 1 Scancode 62
-[  +0.000574] picocalc_kbd 1-001f: key_report_event state 1, scancode 62 mapped to keycode 52
-[  +0.119408] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x303e State 3 Scancode 62
-[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 62 mapped to keycode 52
-[  +0.055425] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
-[  +0.000553] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
-[  +0.023444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
-[  +0.000552] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
-[  +0.979444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.095437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +3.183406] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x102e State 1 Scancode 46
-[  +0.000568] picocalc_kbd 1-001f: key_report_event state 1, scancode 46 mapped to keycode 52
-[  +0.079429] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x302e State 3 Scancode 46
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 46 mapped to keycode 52
-[  +0.735461] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x102f State 1 Scancode 47
-[  +0.000581] picocalc_kbd 1-001f: key_report_event state 1, scancode 47 mapped to keycode 53
-[  +0.063414] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x302f State 3 Scancode 47
-[  +0.000578] picocalc_kbd 1-001f: key_report_event state 3, scancode 47 mapped to keycode 53
-[  +0.919417] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106b State 1 Scancode 107
-[  +0.000589] picocalc_kbd 1-001f: key_report_event state 1, scancode 107 mapped to keycode 37
-[  +0.075437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306b State 3 Scancode 107
-[  +0.000567] picocalc_kbd 1-001f: key_report_event state 3, scancode 107 mapped to keycode 37
-[  +0.083383] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1062 State 1 Scancode 98
-[  +0.000561] picocalc_kbd 1-001f: key_report_event state 1, scancode 98 mapped to keycode 48
-[  +0.095440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3062 State 3 Scancode 98
-[  +0.000557] picocalc_kbd 1-001f: key_report_event state 3, scancode 98 mapped to keycode 48
-[  +0.279436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1064 State 1 Scancode 100
-[  +0.000562] picocalc_kbd 1-001f: key_report_event state 1, scancode 100 mapped to keycode 32
-[  +0.119444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3064 State 3 Scancode 100
-[  +0.000560] picocalc_kbd 1-001f: key_report_event state 3, scancode 100 mapped to keycode 32
-[  +0.319432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x102e State 1 Scancode 46
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 1, scancode 46 mapped to keycode 52
-[  +0.119430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x302e State 3 Scancode 46
-[  +0.000568] picocalc_kbd 1-001f: key_report_event state 3, scancode 46 mapped to keycode 52
-[  +0.183432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106c State 1 Scancode 108
-[  +0.000562] picocalc_kbd 1-001f: key_report_event state 1, scancode 108 mapped to keycode 38
-[  +0.079436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306c State 3 Scancode 108
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 108 mapped to keycode 38
-[  +0.119436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106f State 1 Scancode 111
-[  +0.000561] picocalc_kbd 1-001f: key_report_event state 1, scancode 111 mapped to keycode 24
-[  +0.075440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306f State 3 Scancode 111
-[  +0.000571] picocalc_kbd 1-001f: key_report_event state 3, scancode 111 mapped to keycode 24
-[  +0.063426] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1067 State 1 Scancode 103
-[  +0.000552] picocalc_kbd 1-001f: key_report_event state 1, scancode 103 mapped to keycode 34
-[  +0.075445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3067 State 3 Scancode 103
-[  +0.000559] picocalc_kbd 1-001f: key_report_event state 3, scancode 103 mapped to keycode 34
-[  +0.159443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x100a State 1 Scancode 10
-[  +0.000561] picocalc_kbd 1-001f: key_report_event state 1, scancode 10 mapped to keycode 28
-[  +0.103471] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x300a State 3 Scancode 10
-[  +0.000575] picocalc_kbd 1-001f: key_report_event state 3, scancode 10 mapped to keycode 28
-[May 6 13:08] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
-[  +0.000587] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
-[  +0.119399] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30b5 State 3 Scancode 181
-[  +0.000574] picocalc_kbd 1-001f: key_report_event state 3, scancode 181 mapped to keycode 103
-[  +0.199437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000576] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.319514] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000603] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.015404] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000588] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.123375] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000580] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.119323] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000566] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.119438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.115526] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.119434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000568] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.123432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000568] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.115517] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000582] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.119383] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b4 State 1 Scancode 180
-[  +0.000585] picocalc_kbd 1-001f: key_report_event state 1, scancode 180 mapped to keycode 105
-[  +0.080833] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30b4 State 3 Scancode 180
-[  +0.000580] picocalc_kbd 1-001f: key_report_event state 3, scancode 180 mapped to keycode 105
-[  +2.581842] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
-[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
-[  +0.095436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x107c State 1 Scancode 124
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 124 mapped to keycode 43
-[  +0.079456] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x307c State 3 Scancode 124
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 124 mapped to keycode 43
-[  +0.079438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
-[  +0.000553] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
-[  +0.359432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
-[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
-[  +0.079469] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
-[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
-[  +0.279404] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x100a State 1 Scancode 10
-[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 10 mapped to keycode 28
-[  +0.103489] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x300a State 3 Scancode 10
+[May 6 13:13] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
+[  +0.119434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30b5 State 3 Scancode 181
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 181 mapped to keycode 103
+[  +1.319433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.103449] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000562] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.375431] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1077 State 1 Scancode 119
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 119 mapped to keycode 17
+[  +0.063454] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3077 State 3 Scancode 119
+[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 119 mapped to keycode 17
+[  +0.899423] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000559] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.059437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1048 State 1 Scancode 72
+[  +0.000561] picocalc_kbd 1-001f: key_report_event state 1, scancode 72 mapped to keycode 35
+[  +0.095445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3048 State 3 Scancode 72
+[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 72 mapped to keycode 35
+[  +0.039425] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
+[  +2.419472] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b7 State 1 Scancode 183
+[  +0.000578] picocalc_kbd 1-001f: key_report_event state 1, scancode 183 mapped to keycode 106
+[  +0.103406] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30b7 State 3 Scancode 183
+[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 183 mapped to keycode 106
+[  +2.115438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
+[  +0.000585] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
+[  +0.103415] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
+[  +0.000580] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
+[  +2.479420] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000588] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.079415] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1026 State 1 Scancode 38
+[  +0.000575] picocalc_kbd 1-001f: key_report_event state 1, scancode 38 mapped to keycode 8
+[  +0.119406] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3026 State 3 Scancode 38
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 38 mapped to keycode 8
+[  +0.015428] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
+[  +0.000551] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
+[  +2.007450] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x100a State 1 Scancode 10
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 10 mapped to keycode 28
+[  +0.079524] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x300a State 3 Scancode 10
 [  +0.000568] picocalc_kbd 1-001f: key_report_event state 3, scancode 10 mapped to keycode 28
-[  +7.623388] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
-[  +0.319994] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.016000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +2.519357] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000573] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.159406] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1044 State 1 Scancode 68
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 68 mapped to keycode 32
+[  +0.075453] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3044 State 3 Scancode 68
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 68 mapped to keycode 32
+[  +0.079426] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000576] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.023494] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000575] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119392] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000578] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.055420] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1050 State 1 Scancode 80
+[  +0.000584] picocalc_kbd 1-001f: key_report_event state 1, scancode 80 mapped to keycode 25
+[  +0.063512] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000602] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.039302] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3050 State 3 Scancode 80
+[  +0.000608] picocalc_kbd 1-001f: key_report_event state 3, scancode 80 mapped to keycode 25
+[  +0.079362] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.079440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1049 State 1 Scancode 73
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 73 mapped to keycode 23
+[  +0.039499] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000573] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.055377] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3049 State 3 Scancode 73
+[  +0.000557] picocalc_kbd 1-001f: key_report_event state 3, scancode 73 mapped to keycode 23
+[  +0.063441] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.055447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1044 State 1 Scancode 68
+[  +0.000553] picocalc_kbd 1-001f: key_report_event state 1, scancode 68 mapped to keycode 32
+[  +0.063452] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.039433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3044 State 3 Scancode 68
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 68 mapped to keycode 32
+[  +0.063440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.115446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000553] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.019445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
+[  +0.583446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x103d State 1 Scancode 61
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 61 mapped to keycode 13
+[  +0.095448] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x303d State 3 Scancode 61
+[  +0.000571] picocalc_kbd 1-001f: key_report_event state 3, scancode 61 mapped to keycode 13
+[  +1.967514] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000573] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.195333] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1024 State 1 Scancode 36
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 1, scancode 36 mapped to keycode 5
+[  +0.079440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3024 State 3 Scancode 36
+[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 36 mapped to keycode 5
+[  +0.039436] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.019447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.115445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.123443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000553] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.115447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000553] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.019452] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1021 State 1 Scancode 33
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 33 mapped to keycode 2
+[  +0.103447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.015443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3021 State 3 Scancode 33
+[  +0.000562] picocalc_kbd 1-001f: key_report_event state 3, scancode 33 mapped to keycode 2
+[  +0.103426] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.035454] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
+[  +0.000557] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
+[  +0.463465] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x100a State 1 Scancode 10
+[  +0.000579] picocalc_kbd 1-001f: key_report_event state 1, scancode 10 mapped to keycode 28
+[  +0.075580] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x300a State 3 Scancode 10
+[  +0.000616] picocalc_kbd 1-001f: key_report_event state 3, scancode 10 mapped to keycode 28
+[ +15.907214] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.319985] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.024009] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120120] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119884] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119996] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.119994] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.120004] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119995] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120051] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119946] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119988] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120006] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120006] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.120001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.127998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.120001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.124003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
 [  +0.119994] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.056000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
-[  +1.619999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.120005] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120041] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.039953] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +0.776008] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.319987] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.023993] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.080010] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +2.475993] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.320005] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.023999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119994] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.116075] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.123918] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120011] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119990] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120014] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.079998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +2.079996] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.320000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.016007] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119981] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120025] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119990] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120004] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.000574] picocalc_kbd 1-001f: input_fw_read_fifo 01: 0x10d7 State 1 Scancode 215
+[  +0.063529] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30d7 State 3 Scancode 215
+[  +0.000602] picocalc_kbd 1-001f: key_report_event state 3, scancode 215 mapped to keycode 109
+[  +0.055258] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120010] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119997] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120002] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120002] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +1.224007] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[May 6 13:14] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.023999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120005] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.079999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +1.780010] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.079469] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000559] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.095444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000578] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.079419] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000576] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +1.759439] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.323981] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.016017] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.124000] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120006] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119996] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120004] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120002] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.116001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.124008] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119997] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119998] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.080002] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10d6 State 1 Scancode 214
+[  +0.040094] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.123902] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120009] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.016087] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.023975] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.075995] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.039913] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.087995] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.032006] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30d6 State 3 Scancode 214
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 3, scancode 214 mapped to keycode 104
+[  +0.083444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.115999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.099999] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +0.760011] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
 [  +0.319997] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.024004] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.115990] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120004] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120005] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.119986] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120005] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
-[  +0.120002] picocalc_kbd 1-001f: input_fw_read_f
+[  +0.019992] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.120009] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.064001] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10d6 State 1 Scancode 214
+[  +0.055996] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.060003] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30d6 State 3 Scancode 214
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 3, scancode 214 mapped to keycode 104
+[  +0.059477] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119967] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +0.720006] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.079445] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000569] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.079432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.083447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.079430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.059523] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000565] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.079359] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.055442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000567] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +0.079439] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.083449] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +3.135472] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a3 State 1 Scancode 163
+[  +0.320016] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.000574] picocalc_kbd 1-001f: input_fw_read_fifo 01: 0x10d6 State 1 Scancode 214
+[  +0.023548] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119846] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.119994] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.063996] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.020093] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.036021] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.079887] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20d6 State 2 Scancode 214
+[  +0.036169] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a3 State 2 Scancode 163
+[  +0.087841] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a3 State 3 Scancode 163
+[  +0.000557] picocalc_kbd 1-001f: input_fw_read_fifo 01: 0x20d6 State 2 Scancode 214
+[  +0.000546] picocalc_kbd 1-001f: key_report_event state 2, scancode 214 mapped to keycode 104
+[  +0.118894] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
+[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
+[  +0.119443] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
+[  +0.000559] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
+[  +0.119444] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
+[  +0.000557] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
+[  +0.119453] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10b5 State 1 Scancode 181
+[  +0.000562] picocalc_kbd 1-001f: key_report_event state 1, scancode 181 mapped to keycode 103
+[  +0.058979] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30b5 State 3 Scancode 181
+[  +0.000592] picocalc_kbd 1-001f: key_report_event state 3, scancode 181 mapped to keycode 103
+[  +1.455865] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000565] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.319684] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000603] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.023247] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000570] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.115430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000579] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.119438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1008 State 1 Scancode 8
+[  +0.000593] picocalc_kbd 1-001f: key_report_event state 1, scancode 8 mapped to keycode 14
+[  +0.119404] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3008 State 3 Scancode 8
+[  +0.000582] picocalc_kbd 1-001f: key_report_event state 3, scancode 8 mapped to keycode 14
+[  +4.763366] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1073 State 1 Scancode 115
+[  +0.000580] picocalc_kbd 1-001f: key_report_event state 1, scancode 115 mapped to keycode 31
+[  +0.095384] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3073 State 3 Scancode 115
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 115 mapped to keycode 31
+[  +0.119442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106c State 1 Scancode 108
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 108 mapped to keycode 38
+[  +0.103446] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306c State 3 Scancode 108
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 108 mapped to keycode 38
+[  +0.159432] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1065 State 1 Scancode 101
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 1, scancode 101 mapped to keycode 18
+[  +0.059504] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3065 State 3 Scancode 101
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 101 mapped to keycode 18
+[  +0.095380] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1065 State 1 Scancode 101
+[  +0.000553] picocalc_kbd 1-001f: key_report_event state 1, scancode 101 mapped to keycode 18
+[  +0.083448] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1070 State 1 Scancode 112
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 1, scancode 112 mapped to keycode 25
+[  +0.019508] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3065 State 3 Scancode 101
+[  +0.000580] picocalc_kbd 1-001f: key_report_event state 3, scancode 101 mapped to keycode 18
+[  +0.095351] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3070 State 3 Scancode 112
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 112 mapped to keycode 25
+[  +0.383434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
+[  +0.119453] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
+[  +0.039430] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1032 State 1 Scancode 50
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 1, scancode 50 mapped to keycode 3
+[  +0.095451] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3032 State 3 Scancode 50
+[  +0.000561] picocalc_kbd 1-001f: key_report_event state 3, scancode 50 mapped to keycode 3
+[  +0.183439] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x100a State 1 Scancode 10
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 10 mapped to keycode 28
+[  +0.095677] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x300a State 3 Scancode 10
+[  +0.000569] picocalc_kbd 1-001f: key_report_event state 3, scancode 10 mapped to keycode 28
+[  +2.367282] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106b State 1 Scancode 107
+[  +0.000593] picocalc_kbd 1-001f: key_report_event state 1, scancode 107 mapped to keycode 37
+[  +0.055435] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306b State 3 Scancode 107
+[  +0.000580] picocalc_kbd 1-001f: key_report_event state 3, scancode 107 mapped to keycode 37
+[  +0.139323] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1069 State 1 Scancode 105
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 1, scancode 105 mapped to keycode 23
+[  +0.079433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3069 State 3 Scancode 105
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 105 mapped to keycode 23
+[  +0.239434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106c State 1 Scancode 108
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 108 mapped to keycode 38
+[  +0.103451] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306c State 3 Scancode 108
+[  +0.000560] picocalc_kbd 1-001f: key_report_event state 3, scancode 108 mapped to keycode 38
+[  +0.055433] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x106c State 1 Scancode 108
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 1, scancode 108 mapped to keycode 38
+[  +0.079454] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x306c State 3 Scancode 108
+[  +0.000564] picocalc_kbd 1-001f: key_report_event state 3, scancode 108 mapped to keycode 38
+[  +0.239473] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1020 State 1 Scancode 32
+[  +0.000581] picocalc_kbd 1-001f: key_report_event state 1, scancode 32 mapped to keycode 57
+[  +0.103394] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3020 State 3 Scancode 32
+[  +0.000572] picocalc_kbd 1-001f: key_report_event state 3, scancode 32 mapped to keycode 57
+[  +1.639450] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000580] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.079559] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1024 State 1 Scancode 36
+[  +0.000588] picocalc_kbd 1-001f: key_report_event state 1, scancode 36 mapped to keycode 5
+[  +0.103241] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3024 State 3 Scancode 36
+[  +0.000563] picocalc_kbd 1-001f: key_report_event state 3, scancode 36 mapped to keycode 5
+[  +0.095440] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x30a2 State 3 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 3, scancode 162 mapped to keycode 42
+[  +0.799448] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x10a2 State 1 Scancode 162
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 1, scancode 162 mapped to keycode 42
+[  +0.159447] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1044 State 1 Scancode 68
+[  +0.000562] picocalc_kbd 1-001f: key_report_event state 1, scancode 68 mapped to keycode 32
+[  +0.103434] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3044 State 3 Scancode 68
+[  +0.000558] picocalc_kbd 1-001f: key_report_event state 3, scancode 68 mapped to keycode 32
+[  +0.055442] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000561] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.023437] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000554] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119438] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119452] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000555] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.019453] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x1050 State 1 Scancode 80
+[  +0.000565] picocalc_kbd 1-001f: key_report_event state 1, scancode 80 mapped to keycode 25
+[  +0.055454] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x3050 State 3 Scancode 80
+[  +0.000570] picocalc_kbd 1-001f: key_report_event state 3, scancode 80 mapped to keycode 25
+[  +0.039408] picocalc_kbd 1-001f: input_fw_read_fifo 00: 0x20a2 State 2 Scancode 162
+[  +0.000556] picocalc_kbd 1-001f: key_report_event state 2, scancode 162 mapped to keycode 42
+[  +0.119444] picocalc_kb
