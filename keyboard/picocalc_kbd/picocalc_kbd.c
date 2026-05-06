@@ -228,10 +228,12 @@ struct rshift_macro_entry
 static const struct rshift_macro_entry rshift_macros[] = {
     {0xB4, KEY_HOME},     // arrow left (raw scancode — firmware may not send this)
     {0xB7, KEY_END},      // arrow right (raw scancode — firmware may not send this)
-    {0xB5, KEY_PAGEUP},   // arrow up
-    {0xB6, KEY_PAGEDOWN}, // arrow down
+    {0xB5, KEY_PAGEUP},   // arrow up (raw scancode — firmware may not send this)
+    {0xB6, KEY_PAGEDOWN}, // arrow down (raw scancode — firmware may not send this)
     {0xD2, KEY_HOME},     // HOME scancode — firmware emits this for RSHIFT+left
     {0xD5, KEY_END},      // END scancode — firmware emits this for RSHIFT+right
+    {0xD6, KEY_PAGEUP},   // PGUP scancode — firmware emits this for RSHIFT+up
+    {0xD7, KEY_PAGEDOWN}, // PGDN scancode — firmware emits this for RSHIFT+down
     {0, 0},
 };
 
