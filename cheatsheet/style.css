@@ -4,39 +4,50 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  src: url('fonts/DejaVuSansMono.ttf') format('truetype');
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ═══ THEME VARIABLES ═══════════════════════════════════════════════════ */
 :root {
-  /* Dark theme (default) — light red accent on near-black */
-  --bg:         #0f0f0f;
-  --bg2:        #1a1a1a;
-  --bg3:        #131313;
-  --fg:         #f0f0f0;
-  --fg-dim:     #888888;
-  --border:     #2a2a2a;
-  --accent:     #ff5555;
-  --key-bg:     #1a1a1a;
-  --key-fg:     #f0f0f0;
-  --key-border: #444444;
-  --key-shadow: #000000;
+  /* Dark theme — light grey keys on near-black, bright red accent */
+  --bg:            #0f0f0f;
+  --bg2:           #1a1a1a;
+  --bg3:           #131313;
+  --fg:            #f0f0f0;
+  --fg-dim:        #aaaaaa;
+  --border:        #2a2a2a;
+  --accent:        #ff5555;
+
+  /* Keys: light grey bg, dark text (inverted from page) */
+  --key-bg:        #cccccc;
+  --key-fg:        #111111;
+  --key-border-tl: #e2e2e2;
+  --key-border-br: #888888;
 
   --font-pico: 'PICO-8', 'Courier New', monospace;
+  --font-sans: 'DejaVu Sans Mono', 'Courier New', monospace;
 }
 
-/* Light theme — dark red accent on white, high contrast */
+/* Light theme — dark grey keys on white, vivid red accent */
 body.light {
-  --bg:         #ffffff;
-  --bg2:        #f0f0f0;
-  --bg3:        #fafafa;
-  --fg:         #0f0f0f;
-  --fg-dim:     #555555;
-  --border:     #cccccc;
-  --accent:     #c00000;
-  --key-bg:     #ffffff;
-  --key-fg:     #0f0f0f;
-  --key-border: #aaaaaa;
-  --key-shadow: #888888;
+  --bg:            #ffffff;
+  --bg2:           #f0f0f0;
+  --bg3:           #fafafa;
+  --fg:            #0f0f0f;
+  --fg-dim:        #444444;
+  --border:        #cccccc;
+  --accent:        #e8002a;
+
+  /* Keys: dark grey bg, light text (inverted from page) */
+  --key-bg:        #2a2a2a;
+  --key-fg:        #f2f2f2;
+  --key-border-tl: #4a4a4a;
+  --key-border-br: #000000;
 }
 
 /* ═══ BASE ══════════════════════════════════════════════════════════════ */
@@ -62,26 +73,28 @@ body {
   font-family: var(--font-pico);
   font-size: 0.6rem;
   background: var(--key-bg);
-  color: var(--accent);
-  border: 1px solid var(--key-border);
-  border-bottom: 3px solid var(--key-shadow);
-  padding: 0.25rem 0.65rem 0.3rem;
+  color: var(--key-fg);
+  border-top: 1px solid var(--key-border-tl);
+  border-left: 1px solid var(--key-border-tl);
+  border-right: 3px solid var(--key-border-br);
+  border-bottom: 3px solid var(--key-border-br);
+  padding: 0.3rem 0.75rem 0.35rem;
   cursor: pointer;
   z-index: 9999;
   letter-spacing: 0.1em;
   user-select: none;
-  transition: transform 0.06s, border-bottom-width 0.06s;
+  transition: transform 0.06s, border-bottom-width 0.06s, border-right-width 0.06s;
   border-radius: 0;
 }
 #dark-toggle:active {
-  transform: translateY(2px);
+  transform: translateY(2px) translateX(1px);
   border-bottom-width: 1px;
+  border-right-width: 1px;
 }
 #dark-toggle:hover {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
-  border-bottom-color: var(--bg);
 }
 
 /* ═══ HEADER ════════════════════════════════════════════════════════════ */
@@ -95,19 +108,12 @@ header {
 h1 {
   font-family: var(--font-pico);
   font-size: 2.8rem;
-  color: var(--accent);
+  color: var(--fg);
   letter-spacing: 0.2em;
   line-height: 1;
 }
 
 .cursor { color: var(--accent); }
-
-.subtitle {
-  font-size: 0.6rem;
-  color: var(--fg-dim);
-  letter-spacing: 0.12em;
-  margin-top: 0.5rem;
-}
 
 /* ═══ PANELS ════════════════════════════════════════════════════════════ */
 .panel { margin-bottom: 2rem; }
@@ -115,7 +121,7 @@ h1 {
 .panel > h2 {
   font-family: var(--font-pico);
   font-size: 0.75rem;
-  color: var(--accent);
+  color: var(--fg);
   letter-spacing: 0.1em;
   margin-bottom: 0.75rem;
   padding-bottom: 0.3rem;
@@ -124,7 +130,7 @@ h1 {
 
 .panel > h2::before {
   content: '> ';
-  opacity: 0.5;
+  color: var(--accent);
 }
 
 /* ═══ CATEGORY GRID ═════════════════════════════════════════════════════ */
@@ -148,7 +154,7 @@ h1 {
 .category-block h3 {
   font-family: var(--font-pico);
   font-size: 0.6rem;
-  color: var(--accent);
+  color: var(--fg);
   letter-spacing: 0.08em;
   margin-bottom: 0.45rem;
   padding-bottom: 0.25rem;
@@ -190,9 +196,11 @@ code, .sig {
   font-size: 0.6rem;
   background: var(--key-bg);
   color: var(--key-fg);
-  border: 1px solid var(--key-border);
-  border-bottom: 2px solid var(--key-shadow);
-  padding: 0.1em 0.35em;
+  border-top: 1px solid var(--key-border-tl);
+  border-left: 1px solid var(--key-border-tl);
+  border-right: 3px solid var(--key-border-br);
+  border-bottom: 3px solid var(--key-border-br);
+  padding: 0.15em 0.45em 0.2em;
   display: inline-block;
   white-space: nowrap;
   line-height: 1.5;
@@ -202,10 +210,11 @@ code, .sig {
 
 /* ═══ DESCRIPTIONS ══════════════════════════════════════════════════════ */
 .desc {
-  font-family: var(--font-pico);
-  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
   color: var(--fg-dim);
   line-height: 1.45;
+  text-transform: none;
 }
 
 /* ═══ API ENTRIES ═══════════════════════════════════════════════════════ */
@@ -260,7 +269,6 @@ code, .sig {
   .cursor { display: none; }
 
   h1 { font-size: 2rem; color: #000 !important; letter-spacing: 0.12em; }
-  .subtitle { color: #555 !important; }
 
   header {
     margin-bottom: 0.4cm;
@@ -292,8 +300,10 @@ code, .sig {
   code, .sig {
     background: #f2f2f2 !important;
     color: #000 !important;
-    border: 1px solid #999 !important;
-    border-bottom-width: 1px !important;
+    border-top: 1px solid #999 !important;
+    border-left: 1px solid #999 !important;
+    border-right: 1px solid #666 !important;
+    border-bottom: 1px solid #666 !important;
   }
 
   .desc { color: #333 !important; }
