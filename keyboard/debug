@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Capture dmesg trace of picocalc_kbd while user performs RSHIFT+arrow combos.
+# Requires DEBUG_LEVEL_FE enabled in keyboard/picocalc_kbd/debug_levels.h
+# and the module rebuilt + reloaded via setup_keyboard.sh.
+#
+# Output: keyboard/kbd.log (relative to repo root)
+
+set -u
+
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+LOG="$REPO_ROOT/keyboard/kbd.log"
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Run with sudo (needs dmesg -C)." >&2
+  exit 1
+fi
+
+dmesg -C
+sleep 1
+dmesg -wH | grep --line-buffered picocalc_kbd > "$LOG" &
+DPID=$!
+
+trap 'kill $DPID 2>/dev/null; sync' EXIT
+
+echo ">>> Hold RSHIFT + tap LEFT now (3 sec window)"
+sleep 3
+echo ">>> Release RSHIFT, pause"
+sleep 1
+echo ">>> Hold RSHIFT + tap RIGHT now (3 sec window)"
+sleep 3
+echo ">>> Release RSHIFT, pause"
+sleep 1
+echo ">>> Hold RSHIFT + tap UP now (3 sec window)"
+sleep 3
+echo ">>> Release RSHIFT, pause"
+sleep 1
+echo ">>> Hold RSHIFT + tap DOWN now (3 sec window)"
+sleep 3
+echo ">>> Done. Flushing..."
+sleep 2
+
+kill $DPID 2>/dev/null
+sync
+trap - EXIT
+
+echo "Log written to $LOG"
+echo "Commit + push, then notify host for analysis."
