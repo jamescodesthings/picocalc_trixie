@@ -1,0 +1,4 @@
+[submodule "keyboard/firmware"]
+	path = keyboard/firmware
+	url = git@github.com:jamescodesthings/PicoCalc.git
+	branch = fix/rshift-arrows-home-end

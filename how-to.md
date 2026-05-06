@@ -85,6 +85,12 @@ The driver repurposes the right shift key (RSHIFT) as a function layer — it ne
 `KEY_RIGHTSHIFT` to the OS. F5 toggles mouse mode (arrows = cursor movement, `[` = LMB, `]` = RMB).
 See [docs/keyboard.md](docs/keyboard.md) for the full layout and macro table.
 
+**Optional — patched keyboard firmware:** stock PicoCalc firmware silently drops
+`RSHIFT + LEFT` and `RSHIFT + RIGHT`. The Linux driver above already maps the
+correct scancodes (`0xD2` / `0xD5`), but they only arrive once the on-keyboard STM32
+firmware is reflashed. See [docs/keyboard_firmware.md](docs/keyboard_firmware.md)
+for the build + flash procedure (USB-C, DIP 1 ON, Arduino IDE upload, DIP 1 OFF).
+
 
 ## Step 6: Configure audio
 
