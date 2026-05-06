@@ -226,10 +226,12 @@ struct rshift_macro_entry
   uint16_t keycode;
 };
 static const struct rshift_macro_entry rshift_macros[] = {
-    {0xB4, KEY_HOME},     // arrow left
-    {0xB7, KEY_END},      // arrow right
+    {0xB4, KEY_HOME},     // arrow left (raw scancode — firmware may not send this)
+    {0xB7, KEY_END},      // arrow right (raw scancode — firmware may not send this)
     {0xB5, KEY_PAGEUP},   // arrow up
     {0xB6, KEY_PAGEDOWN}, // arrow down
+    {0xD2, KEY_HOME},     // HOME scancode — firmware emits this for RSHIFT+left
+    {0xD5, KEY_END},      // END scancode — firmware emits this for RSHIFT+right
     {0, 0},
 };
 
@@ -384,11 +386,14 @@ static void key_report_event(struct kbd_ctx *ctx,
           return;
         }
       }
-      if (ev->scancode == 0x5B || ev->scancode == 0x5D)
+      // RSHIFT+[ or RSHIFT+{ (firmware shifts [ to { when RSHIFT held) -> Ctrl+Home
+      // RSHIFT+] or RSHIFT+} (firmware shifts ] to } when RSHIFT held) -> Ctrl+End
+      if (ev->scancode == 0x5B || ev->scancode == 0x7B ||
+          ev->scancode == 0x5D || ev->scancode == 0x7D)
       {
         if (ev->state == KEY_STATE_PRESSED)
         {
-          if (ev->scancode == 0x5B)
+          if (ev->scancode == 0x5B || ev->scancode == 0x7B)
           {
             input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
             input_report_key(ctx->input_dev, KEY_HOME, 1);
@@ -409,12 +414,13 @@ static void key_report_event(struct kbd_ctx *ctx,
     else
     {
       // left shift also held
-      if (ev->scancode == 0x5B || ev->scancode == 0x5D)
+      if (ev->scancode == 0x5B || ev->scancode == 0x7B ||
+          ev->scancode == 0x5D || ev->scancode == 0x7D)
       {
         if (ev->state == KEY_STATE_PRESSED)
         {
           input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
-          if (ev->scancode == 0x5B)
+          if (ev->scancode == 0x5B || ev->scancode == 0x7B)
           {
             input_report_key(ctx->input_dev, KEY_HOME, 1);
             input_report_key(ctx->input_dev, KEY_HOME, 0);
