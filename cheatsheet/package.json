@@ -4,10 +4,14 @@
   "description": "PicoCalc keyboard + PICO-8 cheatsheet builder",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=cheatsheet:* node index"
+    "start": "DEBUG=cheatsheet:* node index",
+    "dev": "nodemon --watch . --ext js,json,ejs,css --exec 'DEBUG=cheatsheet:* node index'"
   },
   "dependencies": {
     "debug": "^4.3.4",
     "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
