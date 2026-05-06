@@ -102,8 +102,8 @@ function buildMarkdown() {
 
   section('keyboard shortcuts', shortcutCategories, 'shortcut');
   section('pico-8 keyboard shortcuts', pico8ShortcutCategories, 'shortcut');
-  section('pico-8 api', apiCategories, 'signature');
   section('terminal', terminalCategories, 'signature');
+  section('pico-8 api', apiCategories, 'signature');
 
   return lines.join('\n');
 }
