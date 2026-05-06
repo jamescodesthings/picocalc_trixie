@@ -171,7 +171,7 @@ h1 {
   align-items: center;
 }
 
-.shortcut-row + .shortcut-row { border-top: 1px solid var(--border); }
+.shortcut-row { margin-bottom: 0.5em; }
 
 .shortcut-row .key  { flex-shrink: 0; min-width: 0; }
 .shortcut-row .desc { flex: 1; min-width: 7rem; }
@@ -222,11 +222,9 @@ code, .sig {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.25rem 0;
-  border-top: 1px solid var(--border);
+  margin-bottom: 0.5em;
   align-items: center;
 }
-
-.api-entry:first-of-type { border-top: none; }
 .api-entry .sig  { flex-shrink: 0; white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
 .api-entry .desc { flex: 1; min-width: 7rem; word-break: break-word; }
 
