@@ -44,58 +44,53 @@ PicoMite, etc) for unrelated tools. We do **not** init those —
 top-level firmware fork.
 
 
-## Build (Linux / macOS)
+## Build (Linux / macOS / Windows)
 
-You need the Arduino IDE and one third-party library. The Arduino IDE
-is the path of least resistance; CLI builds via `arduino-cli` work too
-but are not documented here.
+The sketch project ships a `platformio.ini` — PlatformIO is the
+recommended build path. It handles the STM32 toolchain and the
+XPowersLib dependency automatically.
 
-### 1. Install Arduino IDE 2.x
+### 1. Install PlatformIO
 
-Either from your distro package manager (`apt install arduino`,
-`brew install --cask arduino-ide`) or from
-<https://www.arduino.cc/en/software>.
+Install the **PlatformIO IDE** extension in VSCode. No other toolchain
+setup required.
 
-### 2. Add the STM32 board package
+### 2. Open the project
 
-In Arduino IDE → **Preferences → Additional boards manager URLs**,
-add:
+Open the sketch directory in VSCode:
 
 ```
-https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json
+keyboard/firmware/Code/picocalc_keyboard/
 ```
 
-Then **Tools → Board → Boards Manager**, search "STM32" and install
-**STM32 MCU based boards** (tested with `2.10.0`).
+PlatformIO detects `platformio.ini` on open. It will download the
+`ststm32` platform and `genericSTM32F103R8` board package automatically
+on the first build.
 
-### 3. Install the XPowersLib fork
+The `platformio.ini` pins the XPowersLib dependency to the correct
+fork and branch via `lib_deps`:
 
-Stock Arduino library manager will not serve the right version. Clone
-manually:
+```ini
+lib_deps =
+    https://github.com/cuu/XPowersLib.git#stm32f103r8t6
+```
+
+No manual library installation needed.
+
+### 3. Build
+
+Click the **Build** (✓) button in the PlatformIO toolbar, or via CLI:
 
 ```bash
-git clone -b stm32f103r8t6 https://github.com/cuu/XPowersLib.git \
-  ~/Arduino/libraries/XPowersLib
+cd keyboard/firmware/Code/picocalc_keyboard
+pio run
 ```
 
-### 4. Configure the board
-
-In Arduino IDE:
-
-| Setting              | Value                          |
-|----------------------|--------------------------------|
-| Board                | Generic STM32F1 series         |
-| Board part number    | `Generic F103R8Tx`             |
-| Upload method        | `STM32CubeProgrammer (Serial)` |
-
-### 5. Open the sketch
+Confirm a clean build. The firmware artifact lands at:
 
 ```
-keyboard/firmware/Code/picocalc_keyboard/picocalc_keyboard.ino
+.pio/build/genericSTM32F103R8/firmware.bin
 ```
-
-Verify it compiles — **Sketch → Verify/Compile** (Cmd/Ctrl+R). The
-output should be a `.bin` artifact in the build cache.
 
 
 ## Flash to the PicoCalc
@@ -108,7 +103,7 @@ built-in serial bootloader.
 
 > ⚠ Power off the PicoCalc before toggling DIP switches.
 
-### Procedure (Arduino IDE)
+### Procedure (PlatformIO)
 
 1. **Power off** the PicoCalc completely (long-press power until the
    green LED extinguishes).
@@ -117,11 +112,20 @@ built-in serial bootloader.
 4. **Long-press the PicoCalc Power button** to power on. The screen
    stays blank in this mode — that's normal; the STM32 is now in serial
    bootloader mode.
-5. In Arduino IDE, click **Upload** (Cmd/Ctrl+U).
-6. Wait for "File downloaded successfully" in the Arduino console.
-7. **Power off** the PicoCalc.
-8. **Set DIP 1 back to OFF.**
-9. Power on normally — patched firmware is now live.
+5. Note the USB-serial device: `dmesg | tail` (typically `/dev/ttyUSB0`
+   or `/dev/tty.usbserial-*` on macOS).
+6. In VSCode, click the **Upload** (→) button in the PlatformIO toolbar.
+   Or via CLI:
+
+   ```bash
+   cd keyboard/firmware/Code/picocalc_keyboard
+   pio run --target upload --upload-port /dev/ttyUSB0
+   ```
+
+7. Wait for "SUCCESS" in the terminal output.
+8. **Power off** the PicoCalc.
+9. **Set DIP 1 back to OFF.**
+10. Power on normally — patched firmware is now live.
 
 ### Alternative — Linux command line
 
