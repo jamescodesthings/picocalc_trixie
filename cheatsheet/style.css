@@ -69,6 +69,9 @@ body {
   line-height: 1.6;
   padding: 1.5rem 2rem;
   transition: background 0.15s, color 0.15s;
+  /* PICO-8 font reversed variant: lowercase input → caps-style glyphs,
+     uppercase input → emoji/special chars. Force lowercase everywhere. */
+  text-transform: lowercase;
 }
 
 

@@ -1,15 +1,15 @@
 [
-  {"type":"shortcut","shortcut":"RSHIFT + ←","description":"Home","category":"Navigation"},
-  {"type":"shortcut","shortcut":"RSHIFT + →","description":"End","category":"Navigation"},
-  {"type":"shortcut","shortcut":"RSHIFT + ↑","description":"Page Up","category":"Navigation"},
-  {"type":"shortcut","shortcut":"RSHIFT + ↓","description":"Page Down","category":"Navigation"},
+  {"type":"shortcut","shortcut":"RSHIFT + <-","description":"Home","category":"Navigation"},
+  {"type":"shortcut","shortcut":"RSHIFT + ->","description":"End","category":"Navigation"},
+  {"type":"shortcut","shortcut":"RSHIFT + up","description":"Page Up","category":"Navigation"},
+  {"type":"shortcut","shortcut":"RSHIFT + dn","description":"Page Down","category":"Navigation"},
   {"type":"shortcut","shortcut":"RSHIFT + [","description":"Ctrl+Home (file start)","category":"Navigation"},
   {"type":"shortcut","shortcut":"RSHIFT + ]","description":"Ctrl+End (file end)","category":"Navigation"},
-  {"type":"shortcut","shortcut":"Ctrl + ← / →","description":"Word jump","category":"Navigation"},
+  {"type":"shortcut","shortcut":"Ctrl + <- / ->","description":"Word jump","category":"Navigation"},
   {"type":"shortcut","shortcut":"Alt + F / B","description":"Word jump fwd/back (readline)","category":"Navigation"},
 
   {"type":"shortcut","shortcut":"LSHIFT + arrow","description":"Select character","category":"Selection"},
-  {"type":"shortcut","shortcut":"LSHIFT + RSHIFT + ← / →","description":"Word select (Ctrl+Shift+arrow)","category":"Selection"},
+  {"type":"shortcut","shortcut":"LSHIFT + RSHIFT + <- / ->","description":"Word select (Ctrl+Shift+arrow)","category":"Selection"},
   {"type":"shortcut","shortcut":"LSHIFT + RSHIFT + [","description":"Select to line start","category":"Selection"},
   {"type":"shortcut","shortcut":"LSHIFT + RSHIFT + ]","description":"Select to line end","category":"Selection"},
 
@@ -34,7 +34,7 @@
   {"type":"shortcut","shortcut":"Ctrl+R","description":"Run / reload cart","category":"PICO-8: System"},
   {"type":"shortcut","shortcut":"Ctrl+S","description":"Quick save","category":"PICO-8: System"},
   {"type":"shortcut","shortcut":"Ctrl+M","description":"Mute / unmute","category":"PICO-8: System"},
-  {"type":"shortcut","shortcut":"Alt + ← / →","description":"Previous / next editor tab","category":"PICO-8: System"},
+  {"type":"shortcut","shortcut":"Alt + <- / ->","description":"Previous / next editor tab","category":"PICO-8: System"},
   {"type":"shortcut","shortcut":"Ctrl+Tab","description":"Next tab","category":"PICO-8: System"},
   {"type":"shortcut","shortcut":"Ctrl+6/7/8/9","description":"Screenshot / label / GIF start / GIF save","category":"PICO-8: System"},
 
@@ -46,10 +46,10 @@
   {"type":"shortcut","shortcut":"Ctrl+U","description":"Help on keyword","category":"PICO-8: Editor"},
   {"type":"shortcut","shortcut":"Ctrl+L","description":"Jump to line","category":"PICO-8: Editor"},
   {"type":"shortcut","shortcut":"Ctrl+W / E","description":"Line start / end","category":"PICO-8: Editor"},
-  {"type":"shortcut","shortcut":"Ctrl+↑ / ↓","description":"File start / end","category":"PICO-8: Editor"},
-  {"type":"shortcut","shortcut":"Ctrl+← / →","description":"Jump by word","category":"PICO-8: Editor"},
+  {"type":"shortcut","shortcut":"Ctrl+up / dn","description":"File start / end","category":"PICO-8: Editor"},
+  {"type":"shortcut","shortcut":"Ctrl+<- / ->","description":"Jump by word","category":"PICO-8: Editor"},
   {"type":"shortcut","shortcut":"Tab / Shift+Tab","description":"Indent / unindent","category":"PICO-8: Editor"},
-  {"type":"shortcut","shortcut":"Alt+↑ / ↓","description":"Jump to prev / next function","category":"PICO-8: Editor"},
+  {"type":"shortcut","shortcut":"Alt+up / dn","description":"Jump to prev / next function","category":"PICO-8: Editor"},
 
   {"type":"shortcut","shortcut":"D-pad / ZXCV","description":"Move (P1) / O+X buttons","category":"PICO-8: Runtime"},
   {"type":"shortcut","shortcut":"Z, C, N","description":"O button (P1)","category":"PICO-8: Runtime"},
@@ -74,7 +74,7 @@
   {"type":"api","signature":"print(str,[x,y,[c]])","description":"Print text; returns end x","category":"API: Graphics"},
   {"type":"api","signature":"camera([x,y])","description":"Set camera offset","category":"API: Graphics"},
   {"type":"api","signature":"clip([x,y,w,h])","description":"Set clipping region","category":"API: Graphics"},
-  {"type":"api","signature":"pal([c0,c1,[p]])","description":"Remap colour c0→c1; p=0 display, p=1 sprite","category":"API: Graphics"},
+  {"type":"api","signature":"pal([c0,c1,[p]])","description":"Remap colour c0->c1; p=0 display, p=1 sprite","category":"API: Graphics"},
   {"type":"api","signature":"palt([c,t])","description":"Set colour c transparency (true/false)","category":"API: Graphics"},
   {"type":"api","signature":"fillp([pat])","description":"Set fill pattern","category":"API: Graphics"},
 
@@ -87,7 +87,7 @@
 
   {"type":"api","signature":"btn([i,[p]])","description":"True while button i held; p=player (0/1)","category":"API: Input"},
   {"type":"api","signature":"btnp([i,[p]])","description":"True on first press + repeat; 15f delay, 4f interval","category":"API: Input"},
-  {"type":"api","signature":"0=← 1=→ 2=↑ 3=↓ 4=O 5=X","description":"Button indices","category":"API: Input"},
+  {"type":"api","signature":"0=<- 1=-> 2=up 3=dn 4=O 5=X","description":"Button indices","category":"API: Input"},
 
   {"type":"api","signature":"sfx(n,[chan,[offset]])","description":"Play SFX n; n=-1 stop all","category":"API: Audio"},
   {"type":"api","signature":"music([n,[fade,[mask]]])","description":"Play music pattern n; n=-1 stop","category":"API: Audio"},

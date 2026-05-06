@@ -5,10 +5,10 @@
   function applyTheme(isLight) {
     if (isLight) {
       body.classList.add('light');
-      btn.textContent = 'DARK';
+      btn.textContent = 'dark';
     } else {
       body.classList.remove('light');
-      btn.textContent = 'LITE';
+      btn.textContent = 'lite';
     }
   }
 

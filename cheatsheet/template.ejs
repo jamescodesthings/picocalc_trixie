@@ -7,20 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="dark-toggle" aria-label="Toggle theme">LITE</button>
+  <button id="dark-toggle" aria-label="Toggle theme">lite</button>
 
   <header>
-    <h1>PICOCALC<span class="cursor">_</span></h1>
-    <p class="subtitle">Pi Zero 2W &middot; PICO-8 &middot; Keyboard &amp; API Reference</p>
+    <h1>picocalc<span class="cursor">_</span></h1>
+    <p class="subtitle">pi zero 2w &middot; pico-8 &middot; keyboard &amp; api reference</p>
   </header>
 
   <main>
     <section class="panel keyboard-panel">
-      <h2>Keyboard Shortcuts</h2>
+      <h2>keyboard shortcuts</h2>
       <div class="category-grid">
         <% for (const [category, items] of Object.entries(shortcutCategories)) { %>
         <div class="category-block">
-          <h3><%= category %></h3>
+          <h3><%= category.toLowerCase() %></h3>
           <table class="shortcut-table">
             <% items.forEach(function(item) { %>
             <tr>
@@ -35,11 +35,11 @@
     </section>
 
     <section class="panel api-panel">
-      <h2>PICO-8 API</h2>
+      <h2>pico-8 api</h2>
       <div class="category-grid">
         <% for (const [category, items] of Object.entries(apiCategories)) { %>
         <div class="category-block">
-          <h3><%= category.replace('API: ', '') %></h3>
+          <h3><%= category.replace('API: ', '').toLowerCase() %></h3>
           <% items.forEach(function(item) { %>
           <div class="api-entry">
             <code class="sig"><%= item.signature %></code>
