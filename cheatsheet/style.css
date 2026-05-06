@@ -216,6 +216,7 @@ code, .sig {
   color: var(--fg-dim);
   line-height: 1.45;
   text-transform: none;
+  text-align: right;
 }
 
 /* ═══ API ENTRIES ═══════════════════════════════════════════════════════ */
