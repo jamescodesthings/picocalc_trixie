@@ -320,8 +320,20 @@ static void key_report_event(struct kbd_ctx *ctx,
     case '[':
       input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
       return;
+    case 0xA2: // lshift release — keep held state in sync
+      if (ev->state == KEY_STATE_RELEASED) ctx->lshift_held = 0;
+      return;
+    case 0xA1: // lalt release
+      if (ev->state == KEY_STATE_RELEASED) ctx->lalt_held = 0;
+      return;
+    case 0xA5: // lctrl release
+      if (ev->state == KEY_STATE_RELEASED) ctx->lctrl_held = 0;
+      return;
+    case 0xA3: // rshift release
+      if (ev->state == KEY_STATE_RELEASED) { ctx->rshift_held = 0; ctx->rshift_used = 0; }
+      return;
     default:
-      return; // in mouse mode ignore all other keys for now (except the ones handled above)
+      return;
     }
   }
 
