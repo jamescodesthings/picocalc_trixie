@@ -161,6 +161,8 @@
   {"type":"terminal","signature":"sudo modprobe <name>","description":"load kernel module","category":"Terminal: Raspi"},
   {"type":"terminal","signature":"sudo apt update && sudo apt upgrade -y","description":"update all packages","category":"Terminal: Raspi"},
   {"type":"terminal","signature":"evtest","description":"test input events - select device interactively","category":"Terminal: Raspi"},
+  {"type":"terminal","signature":"grep -A4 picocalc /proc/bus/input/devices","description":"find keyboard event device number","category":"Terminal: Raspi"},
+  {"type":"terminal","signature":"evtest /dev/input/event<n>","description":"watch raw key events from a specific device","category":"Terminal: Raspi"},
   {"type":"terminal","signature":"cat /sys/firmware/picocalc/battery_percent","description":"battery level; >100 subtract 128; >200 charging","category":"Terminal: Raspi"},
 
   {"type":"terminal","signature":"~/projects/","description":"your projects directory","category":"Terminal: Directories"},
