@@ -8,19 +8,34 @@ function escHtml(s) {
 }
 
 function hlShortcut(s) {
-  return s.split(' + ').map(escHtml).join(' <span class="h-op">+</span> ');
+  // Tokenize: ' + ', ' / ', '->', '<-' become h-op spans; everything else is plain text
+  const OPS = [' + ', ' / ', '->', '<-'];
+  let out = '', i = 0;
+  while (i < s.length) {
+    const hit = OPS.find(op => s.startsWith(op, i));
+    if (hit) {
+      out += `<span class="h-op">${escHtml(hit)}</span>`;
+      i += hit.length;
+    } else {
+      out += escHtml(s[i++]);
+    }
+  }
+  return out;
 }
 
 function hlSig(sig) {
-  let out = '', buf = '', inParens = false, inOpt = false;
+  // Tokenize: ()[]<>, inside [] = h-opt, inside () or <> = h-mand, commas = h-op
+  let out = '', buf = '', inParens = false, inOpt = false, inReq = false;
   const flush = () => {
     if (!buf) return;
-    const cls = !inParens ? null : inOpt ? 'h-opt' : 'h-mand';
+    const cls = inReq ? 'h-mand' : !inParens ? null : inOpt ? 'h-opt' : 'h-mand';
     out += cls ? `<span class="${cls}">${escHtml(buf)}</span>` : escHtml(buf);
     buf = '';
   };
   for (const ch of sig) {
-    if      (ch === '(') { flush(); out += `<span class="h-op">(</span>`; inParens = true; }
+    if      (ch === '<') { flush(); out += `<span class="h-op">&lt;</span>`; inReq = true; }
+    else if (ch === '>') { flush(); out += `<span class="h-op">&gt;</span>`; inReq = false; }
+    else if (ch === '(') { flush(); out += `<span class="h-op">(</span>`; inParens = true; }
     else if (ch === ')') { flush(); out += `<span class="h-op">)</span>`; inParens = false; }
     else if (ch === '[') { flush(); out += `<span class="h-op">[</span>`; inOpt = true; }
     else if (ch === ']') { flush(); out += `<span class="h-op">]</span>`; inOpt = false; }

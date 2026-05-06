@@ -134,8 +134,12 @@ h1 {
 }
 
 .category-block {
-  background: var(--bg3);
-  border: 1px solid var(--border);
+  background: var(--bg);
+  border: 0;
+  border-top: 1px solid var(--fg);
+  border-left: 1px solid var(--fg);
+  border-right: 2px solid var(--fg);
+  border-bottom: 2px solid var(--fg);
   padding: 0.55rem 0.65rem;
   break-inside: avoid;
   min-width: 0;
@@ -177,7 +181,8 @@ h1 {
 code, .sig {
   font-family: var(--font-sans);
   text-transform: none;
-  font-size: 0.6rem;
+  font-size: 1rem;
+  font-weight: bold;
   background: var(--key-bg);
   color: var(--key-fg);
   border: 0;
@@ -199,7 +204,7 @@ code, .sig {
 /* ═══ DESCRIPTIONS ══════════════════════════════════════════════════════ */
 .desc {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: var(--fg-dim);
   line-height: 1.45;
   text-transform: none;
@@ -278,7 +283,7 @@ code, .sig {
   }
   body.light header        { border-color: #bbb !important; }
   body.light .panel > h2   { color: #000 !important; border-color: #999 !important; }
-  body.light .category-block          { background: #fff !important; border-color: #ccc !important; }
+  body.light .category-block          { background: #fff !important; }
   body.light .category-block h3       { color: #000 !important; border-color: #ccc !important; }
   body.light code, body.light .sig    { background: #ffffff !important; color: #0f0f0f !important; }
   body.light .h-op, body.light .h-mand, body.light .h-opt { color: #444 !important; }
@@ -298,7 +303,7 @@ code, .sig {
   }
   body:not(.light) header        { border-color: #2a2a2a !important; }
   body:not(.light) .panel > h2   { color: #f0f0f0 !important; border-color: #2a2a2a !important; }
-  body:not(.light) .category-block        { background: #131313 !important; border-color: #2a2a2a !important; }
+  body:not(.light) .category-block        { background: #0f0f0f !important; }
   body:not(.light) .category-block h3     { color: #f0f0f0 !important; border-color: #2a2a2a !important; }
   body:not(.light) code, body:not(.light) .sig {
     -webkit-print-color-adjust: exact;
