@@ -157,6 +157,7 @@ h1 {
 
 .shortcut-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.2rem 0;
   align-items: center;
@@ -165,7 +166,7 @@ h1 {
 .shortcut-row + .shortcut-row { border-top: 1px solid var(--border); }
 
 .shortcut-row .key  { flex-shrink: 0; min-width: 0; }
-.shortcut-row .desc { flex: 1; min-width: 0; }
+.shortcut-row .desc { flex: 1; min-width: 7rem; }
 
 .shortcut-row code {
   white-space: normal;
