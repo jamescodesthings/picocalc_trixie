@@ -181,7 +181,7 @@ h1 {
 code, .sig {
   font-family: var(--font-sans);
   text-transform: none;
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: bold;
   background: var(--key-bg);
   color: var(--key-fg);
@@ -204,7 +204,7 @@ code, .sig {
 /* ═══ DESCRIPTIONS ══════════════════════════════════════════════════════ */
 .desc {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 12px;
   color: var(--fg-dim);
   line-height: 1.45;
   text-transform: none;
