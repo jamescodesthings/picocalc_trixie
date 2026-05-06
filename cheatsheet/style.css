@@ -241,39 +241,71 @@ code, .sig {
   .category-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
 }
 
-/* ═══ PRINT ═════════════════════════════════════════════════════════════ */
+/* ═══ PRINT — shared ════════════════════════════════════════════════════ */
 @media print {
   *, *::before, *::after { transition: none !important; }
 
-  body { font-size: 8px; padding: 0.6cm 1.2cm; background: #fff !important; color: #000 !important; }
-
   #dark-toggle { display: none; }
 
-  h1 { font-size: 2rem; color: #000 !important; letter-spacing: 0.12em; }
+  body { font-size: 8px; padding: 0.6cm 1.2cm; }
 
-  header { margin-bottom: 0.4cm; padding-bottom: 0.25cm; border-color: #bbb !important; }
-
+  h1 { font-size: 2rem; letter-spacing: 0.12em; }
+  header { margin-bottom: 0.4cm; padding-bottom: 0.25cm; }
   .panel { margin-bottom: 0.35cm; break-inside: avoid-page; }
-
-  .panel > h2 {
-    font-size: 0.7rem; color: #000 !important; border-color: #000 !important;
-    margin-bottom: 0.25cm; padding-bottom: 0.1cm;
-  }
-
+  .panel > h2 { font-size: 0.7rem; margin-bottom: 0.25cm; padding-bottom: 0.1cm; }
   .category-grid { grid-template-columns: repeat(4, 1fr); gap: 0.25cm; }
+  .category-block { padding: 0.2cm 0.25cm; }
+  .category-block h3 { font-size: 0.58rem; }
 
-  .category-block { background: #fff !important; border: 1px solid #bbb !important; padding: 0.2cm 0.25cm; }
-  .category-block h3 { color: #000 !important; border-color: #ccc !important; font-size: 0.58rem; }
-
+  /* 3D border on keys — accent replaced with neutral grey */
   code, .sig {
-    background: #f2f2f2 !important; color: #000 !important;
-    border: 0 !important; border-right: 1px solid #999 !important; border-bottom: 1px solid #999 !important;
+    border: 0 !important;
+    border-top:    1px solid #555 !important;
+    border-left:   1px solid #555 !important;
+    border-right:  2px solid #555 !important;
+    border-bottom: 2px solid #555 !important;
   }
 
-  .h-op, .h-mand, .h-opt { color: #000 !important; }
-
-  .desc { color: #333 !important; }
-  .shortcut-row + .shortcut-row { border-color: #eee !important; }
-  .api-entry { border-color: #eee !important; }
   main { max-width: none !important; }
+}
+
+/* ═══ PRINT — light mode ════════════════════════════════════════════════ */
+@media print {
+  body.light {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  body.light header        { border-color: #bbb !important; }
+  body.light .panel > h2   { color: #000 !important; border-color: #999 !important; }
+  body.light .category-block          { background: #fff !important; border-color: #ccc !important; }
+  body.light .category-block h3       { color: #000 !important; border-color: #ccc !important; }
+  body.light code, body.light .sig    { background: #ffffff !important; color: #000000 !important; }
+  body.light .h-op, body.light .h-mand, body.light .h-opt { color: #444 !important; }
+  body.light .desc                    { color: #333 !important; }
+  body.light .shortcut-row + .shortcut-row { border-color: #ddd !important; }
+  body.light .api-entry               { border-color: #ddd !important; }
+}
+
+/* ═══ PRINT — dark mode ════════════════════════════════════════════════ */
+@media print {
+  /* Force browser to render dark backgrounds */
+  body:not(.light) {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #0f0f0f !important;
+    color: #f0f0f0 !important;
+  }
+  body:not(.light) header        { border-color: #2a2a2a !important; }
+  body:not(.light) .panel > h2   { color: #f0f0f0 !important; border-color: #2a2a2a !important; }
+  body:not(.light) .category-block        { background: #131313 !important; border-color: #2a2a2a !important; }
+  body:not(.light) .category-block h3     { color: #f0f0f0 !important; border-color: #2a2a2a !important; }
+  body:not(.light) code, body:not(.light) .sig {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #eff6f8 !important;
+    color: #111111 !important;
+  }
+  body:not(.light) .desc                  { color: #e0e0e0 !important; }
+  body:not(.light) .shortcut-row + .shortcut-row { border-color: #2a2a2a !important; }
+  body:not(.light) .api-entry             { border-color: #2a2a2a !important; }
 }
