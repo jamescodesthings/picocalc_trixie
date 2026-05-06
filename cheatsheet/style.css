@@ -70,10 +70,9 @@ body {
   font-size: 0.6rem;
   background: var(--key-bg);
   color: var(--key-fg);
-  border-top: 1px solid var(--accent);
-  border-left: 1px solid var(--accent);
-  border-right: 3px solid var(--accent);
-  border-bottom: 3px solid var(--accent);
+  border: 0;
+  border-right: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
   padding: 0.3rem 0.75rem 0.35rem;
   cursor: pointer;
   z-index: 9999;
@@ -83,9 +82,7 @@ body {
   border-radius: 0;
 }
 #dark-toggle:active {
-  transform: translateY(2px) translateX(1px);
-  border-bottom-width: 1px;
-  border-right-width: 1px;
+  transform: translateY(1px) translateX(1px);
 }
 #dark-toggle:hover {
   background: var(--accent);
@@ -140,7 +137,6 @@ h1 {
 .category-block {
   background: var(--bg3);
   border: 1px solid var(--border);
-  border-left: 2px solid var(--accent);
   padding: 0.55rem 0.65rem;
   break-inside: avoid;
   min-width: 0;
@@ -192,10 +188,9 @@ code, .sig {
   font-size: 0.6rem;
   background: var(--key-bg);
   color: var(--key-fg);
-  border-top: 1px solid var(--accent);
-  border-left: 1px solid var(--accent);
-  border-right: 3px solid var(--accent);
-  border-bottom: 3px solid var(--accent);
+  border: 0;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
   padding: 0.75em 1.25em;
   display: inline-block;
   white-space: nowrap;
@@ -287,7 +282,6 @@ code, .sig {
   .category-block {
     background: #fff !important;
     border: 1px solid #bbb !important;
-    border-left: 2px solid #000 !important;
     padding: 0.2cm 0.25cm;
   }
 
