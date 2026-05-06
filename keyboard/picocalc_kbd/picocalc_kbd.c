@@ -220,16 +220,17 @@ if (kbd_read_i2c_u8(ctx->i2c_client, REG_KEY, &ctx->key_fifo_count)) {
   }
 }
 
-struct rshift_macro_entry {
-    uint8_t scancode;
-    uint16_t keycode;
+struct rshift_macro_entry
+{
+  uint8_t scancode;
+  uint16_t keycode;
 };
 static const struct rshift_macro_entry rshift_macros[] = {
-    { 0xB4, KEY_HOME },
-    { 0xB7, KEY_END },
-    { 0xB5, KEY_PAGEUP },
-    { 0xB6, KEY_PAGEDOWN },
-    { 0, 0 },
+    {0xB4, KEY_HOME},     // arrow left
+    {0xB7, KEY_END},      // arrow right
+    {0xB5, KEY_PAGEUP},   // arrow up
+    {0xB6, KEY_PAGEDOWN}, // arrow down
+    {0, 0},
 };
 
 static void key_report_event(struct kbd_ctx *ctx,
@@ -243,8 +244,7 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
-  /* RIGHT_SHIFT */
-  // Moved to F5 (top right of the keyboard)
+  // Mouse mode toggle: F5 (top right of the keyboard)
   if (ev->scancode == 0x85)
   {
     if (ev->state == KEY_STATE_PRESSED)
@@ -254,110 +254,12 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
-  if (ev->scancode == 0xA2)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lshift_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lshift_held = 0;
-  }
-
-  if (ev->scancode == 0xA1)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lalt_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lalt_held = 0;
-  }
-  if (ev->scancode == 0xA5)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lctrl_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lctrl_held = 0;
-  }
-
-  /* RSHIFT — function layer */
-  if (ev->scancode == 0xA3) {
-    if (ev->state == KEY_STATE_PRESSED) {
-      ctx->rshift_held = 1;
-      ctx->rshift_used = 0;
-    } else if (ev->state == KEY_STATE_RELEASED) {
-      ctx->rshift_held = 0;
-    }
-    return;
-  }
-
-  if (ctx->rshift_held && (ev->state == KEY_STATE_PRESSED || ev->state == KEY_STATE_HOLD)) {
-    int i;
-    unsigned short keycode;
-    ctx->rshift_used = 1;
-
-    if (!ctx->lshift_held) {
-      for (i = 0; rshift_macros[i].scancode != 0; i++) {
-        if (rshift_macros[i].scancode == ev->scancode) {
-          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 1);
-          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 0);
-          return;
-        }
-      }
-      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
-        if (ev->state == KEY_STATE_PRESSED) {
-          if (ev->scancode == 0x5B) {
-            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
-            input_report_key(ctx->input_dev, KEY_HOME, 1);
-            input_report_key(ctx->input_dev, KEY_HOME, 0);
-            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
-          } else {
-            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
-            input_report_key(ctx->input_dev, KEY_END, 1);
-            input_report_key(ctx->input_dev, KEY_END, 0);
-            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
-          }
-        }
-        return;
-      }
-    } else {
-      if (ev->scancode == 0x5B || ev->scancode == 0x5D) {
-        if (ev->state == KEY_STATE_PRESSED) {
-          input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
-          if (ev->scancode == 0x5B) {
-            input_report_key(ctx->input_dev, KEY_HOME, 1);
-            input_report_key(ctx->input_dev, KEY_HOME, 0);
-          } else {
-            input_report_key(ctx->input_dev, KEY_END, 1);
-            input_report_key(ctx->input_dev, KEY_END, 0);
-          }
-        }
-        return;
-      }
-    }
-
-    keycode = keycodes[ev->scancode];
-    if (keycode == 0 || keycode == KEY_UNKNOWN)
-      return;
-    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
-    input_report_key(ctx->input_dev, keycode, 1);
-    input_report_key(ctx->input_dev, keycode, 0);
-    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
-    return;
-  }
-
+  // mouse mode handle
   if (ctx->mouse_mode)
   {
     switch (ev->scancode)
     {
-      /* KEY_BACKSPACE */
-      /*
-                  case '\b':
-                        if (ev->state == KEY_STATE_PRESSED)
-                        {
-                            input_report_abs(ctx->input_dev, ABS_X, 0);
-                            input_report_abs(ctx->input_dev, ABS_Y, 0);
-                        }
-                        return;
-      */
-    /* KEY_RIGHT */
+    // KEY_RIGHT
     case 0xb7:
       if (ev->state == KEY_STATE_PRESSED)
       {
@@ -419,8 +321,127 @@ static void key_report_event(struct kbd_ctx *ctx,
       input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
       return;
     default:
-      break;
+      return; // in mouse mode ignore all other keys for now (except the ones handled above)
     }
+  }
+
+  // Left Shift
+  if (ev->scancode == 0xA2)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lshift_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lshift_held = 0;
+  }
+
+  // Left Alt
+  if (ev->scancode == 0xA1)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lalt_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lalt_held = 0;
+  }
+  // Left Ctrl
+  if (ev->scancode == 0xA5)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lctrl_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lctrl_held = 0;
+  }
+
+  /* RSHIFT — function layer */
+  if (ev->scancode == 0xA3)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+    {
+      ctx->rshift_held = 1;
+      ctx->rshift_used = 0;
+    }
+    else if (ev->state == KEY_STATE_RELEASED)
+    {
+      ctx->rshift_held = 0;
+    }
+    return;
+  }
+
+  // function keys when RSHIFT is held
+  if (ctx->rshift_held && (ev->state == KEY_STATE_PRESSED || ev->state == KEY_STATE_HOLD))
+  {
+    int i;
+    unsigned short keycode;
+    ctx->rshift_used = 1;
+
+    // No left shift
+    if (!ctx->lshift_held)
+    {
+      for (i = 0; rshift_macros[i].scancode != 0; i++)
+      {
+        // if the macro input key is held
+        if (rshift_macros[i].scancode == ev->scancode)
+        {
+          // report the macro keycode as being tapped
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 1);
+          input_report_key(ctx->input_dev, rshift_macros[i].keycode, 0);
+          return;
+        }
+      }
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D)
+      {
+        if (ev->state == KEY_STATE_PRESSED)
+        {
+          if (ev->scancode == 0x5B)
+          {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          }
+          else
+          {
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+            input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+          }
+        }
+        return;
+      }
+    }
+    else
+    {
+      // left shift also held
+      if (ev->scancode == 0x5B || ev->scancode == 0x5D)
+      {
+        if (ev->state == KEY_STATE_PRESSED)
+        {
+          input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 1);
+          if (ev->scancode == 0x5B)
+          {
+            input_report_key(ctx->input_dev, KEY_HOME, 1);
+            input_report_key(ctx->input_dev, KEY_HOME, 0);
+          }
+          else
+          {
+            input_report_key(ctx->input_dev, KEY_END, 1);
+            input_report_key(ctx->input_dev, KEY_END, 0);
+          }
+        }
+        return;
+      }
+    }
+
+    keycode = keycodes[ev->scancode];
+    if (keycode == 0 || keycode == KEY_UNKNOWN)
+      return;
+
+    // otherwise; report the keycode with left ctrl held down (for now, since that's the only modifier we support with RSHIFT macros)
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 1);
+    input_report_key(ctx->input_dev, keycode, 1);
+    input_report_key(ctx->input_dev, keycode, 0);
+    input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
+    return;
   }
 
   // Post key scan event
@@ -455,47 +476,11 @@ static void key_report_event(struct kbd_ctx *ctx,
   // Update last keypress time
   g_ctx->last_keypress_at = ktime_get_boottime_ns();
 
-  /*
-    if (keycode == KEY_STOP) {
-
-      // Pressing power button sends Tmux prefix (Control + code 171 in keymap)
-      if (ev->state == KEY_STATE_PRESSED) {
-        input_report_key(ctx->input_dev, KEY_LEFTCTRL, TRUE);
-        input_report_key(ctx->input_dev, 171, TRUE);
-        input_report_key(ctx->input_dev, 171, FALSE);
-        input_report_key(ctx->input_dev, KEY_LEFTCTRL, FALSE);
-
-      // Short hold power buttion opens Tmux menu (Control + code 174 in keymap)
-      } else if (ev->state == KEY_STATE_HOLD) {
-        input_report_key(ctx->input_dev, KEY_LEFTCTRL, TRUE);
-        input_report_key(ctx->input_dev, 174, TRUE);
-        input_report_key(ctx->input_dev, 174, FALSE);
-        input_report_key(ctx->input_dev, KEY_LEFTCTRL, FALSE);
-      }
-      return;
-    }
-      */
-
-  // Subsystem key handling
-  /*
-if (input_fw_consumes_keycode(ctx, &keycode, keycode, ev->state)
- || input_touch_consumes_keycode(ctx, &keycode, keycode, ev->state)
- || input_modifiers_consumes_keycode(ctx, &keycode, keycode, ev->state)
- || input_meta_consumes_keycode(ctx, &keycode, keycode, ev->state)) {
-  return;
-}
-  */
-
   // Ignore hold keys at this point
   if (ev->state == KEY_STATE_HOLD)
   {
     return;
   }
-
-  /*
-    // Apply pending sticky modifiers
-    keycode = input_modifiers_apply_pending(ctx, keycode);
-  */
 
   // Report key to input system
   if (ctx->lshift_held && ev->state == KEY_STATE_PRESSED &&
@@ -525,20 +510,25 @@ static void input_workqueue_handler(struct work_struct *work_struct_ptr)
     key_report_event(ctx, &ctx->key_fifo_data[fifo_idx]);
   }
 
-  if (ctx->key_fifo_count == KBD_FIFO_SIZE) {
-    if (ctx->lshift_held) {
+  if (ctx->key_fifo_count == KBD_FIFO_SIZE)
+  {
+    if (ctx->lshift_held)
+    {
       input_report_key(ctx->input_dev, KEY_LEFTSHIFT, 0);
       ctx->lshift_held = 0;
     }
-    if (ctx->lalt_held) {
+    if (ctx->lalt_held)
+    {
       input_report_key(ctx->input_dev, KEY_LEFTALT, 0);
       ctx->lalt_held = 0;
     }
-    if (ctx->lctrl_held) {
+    if (ctx->lctrl_held)
+    {
       input_report_key(ctx->input_dev, KEY_LEFTCTRL, 0);
       ctx->lctrl_held = 0;
     }
-    if (ctx->rshift_held) {
+    if (ctx->rshift_held)
+    {
       ctx->rshift_held = 0;
       ctx->rshift_used = 0;
     }
