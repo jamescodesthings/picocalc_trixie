@@ -26,8 +26,6 @@
   /* Keys: light grey bg, dark text (inverted from page) */
   --key-bg:        #cccccc;
   --key-fg:        #111111;
-  --key-border-tl: #e2e2e2;
-  --key-border-br: #888888;
 
   --font-pico: 'PICO-8', 'Courier New', monospace;
   --font-sans: 'DejaVu Sans Mono', 'Courier New', monospace;
@@ -46,8 +44,6 @@ body.light {
   /* Keys: dark grey bg, light text (inverted from page) */
   --key-bg:        #2a2a2a;
   --key-fg:        #f2f2f2;
-  --key-border-tl: #4a4a4a;
-  --key-border-br: #000000;
 }
 
 /* ═══ BASE ══════════════════════════════════════════════════════════════ */
@@ -74,10 +70,10 @@ body {
   font-size: 0.6rem;
   background: var(--key-bg);
   color: var(--key-fg);
-  border-top: 1px solid var(--key-border-tl);
-  border-left: 1px solid var(--key-border-tl);
-  border-right: 3px solid var(--key-border-br);
-  border-bottom: 3px solid var(--key-border-br);
+  border-top: 1px solid var(--accent);
+  border-left: 1px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
   padding: 0.3rem 0.75rem 0.35rem;
   cursor: pointer;
   z-index: 9999;
@@ -196,11 +192,11 @@ code, .sig {
   font-size: 0.6rem;
   background: var(--key-bg);
   color: var(--key-fg);
-  border-top: 1px solid var(--key-border-tl);
-  border-left: 1px solid var(--key-border-tl);
-  border-right: 3px solid var(--key-border-br);
-  border-bottom: 3px solid var(--key-border-br);
-  padding: 0.15em 0.45em 0.2em;
+  border-top: 1px solid var(--accent);
+  border-left: 1px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  padding: 0.2em 0.45em;
   display: inline-block;
   white-space: nowrap;
   line-height: 1.5;
