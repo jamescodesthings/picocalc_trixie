@@ -254,6 +254,44 @@ static void key_report_event(struct kbd_ctx *ctx,
     return;
   }
 
+  // Modifier tracking — runs before mouse mode so releases always clear held state
+  if (ev->scancode == 0xA2)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lshift_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lshift_held = 0;
+  }
+  if (ev->scancode == 0xA1)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lalt_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lalt_held = 0;
+  }
+  if (ev->scancode == 0xA5)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+      ctx->lctrl_held = 1;
+    else if (ev->state == KEY_STATE_RELEASED)
+      ctx->lctrl_held = 0;
+  }
+
+  /* RSHIFT — function layer */
+  if (ev->scancode == 0xA3)
+  {
+    if (ev->state == KEY_STATE_PRESSED)
+    {
+      ctx->rshift_held = 1;
+      ctx->rshift_used = 0;
+    }
+    else if (ev->state == KEY_STATE_RELEASED)
+    {
+      ctx->rshift_held = 0;
+    }
+    return;
+  }
+
   // mouse mode handle
   if (ctx->mouse_mode)
   {
@@ -320,62 +358,9 @@ static void key_report_event(struct kbd_ctx *ctx,
     case '[':
       input_report_key(ctx->input_dev, BTN_LEFT, ev->state == KEY_STATE_PRESSED);
       return;
-    case 0xA2: // lshift release — keep held state in sync
-      if (ev->state == KEY_STATE_RELEASED) ctx->lshift_held = 0;
-      return;
-    case 0xA1: // lalt release
-      if (ev->state == KEY_STATE_RELEASED) ctx->lalt_held = 0;
-      return;
-    case 0xA5: // lctrl release
-      if (ev->state == KEY_STATE_RELEASED) ctx->lctrl_held = 0;
-      return;
-    case 0xA3: // rshift release
-      if (ev->state == KEY_STATE_RELEASED) { ctx->rshift_held = 0; ctx->rshift_used = 0; }
-      return;
     default:
       return;
     }
-  }
-
-  // Left Shift
-  if (ev->scancode == 0xA2)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lshift_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lshift_held = 0;
-  }
-
-  // Left Alt
-  if (ev->scancode == 0xA1)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lalt_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lalt_held = 0;
-  }
-  // Left Ctrl
-  if (ev->scancode == 0xA5)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-      ctx->lctrl_held = 1;
-    else if (ev->state == KEY_STATE_RELEASED)
-      ctx->lctrl_held = 0;
-  }
-
-  /* RSHIFT — function layer */
-  if (ev->scancode == 0xA3)
-  {
-    if (ev->state == KEY_STATE_PRESSED)
-    {
-      ctx->rshift_held = 1;
-      ctx->rshift_used = 0;
-    }
-    else if (ev->state == KEY_STATE_RELEASED)
-    {
-      ctx->rshift_held = 0;
-    }
-    return;
   }
 
   // function keys when RSHIFT is held
