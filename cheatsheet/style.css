@@ -196,7 +196,7 @@ code, .sig {
   border-left: 1px solid var(--accent);
   border-right: 3px solid var(--accent);
   border-bottom: 3px solid var(--accent);
-  padding: 0.2em 0.45em;
+  padding: 0.75em;
   display: inline-block;
   white-space: nowrap;
   line-height: 1.5;
