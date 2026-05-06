@@ -36,19 +36,29 @@ const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf8
 
 debug('grouping by category');
 const shortcutCategories = {};
+const pico8ShortcutCategories = {};
 const apiCategories = {};
 for (const item of data) {
-  const bucket = item.type === 'api' ? apiCategories : shortcutCategories;
-  if (!bucket[item.category]) bucket[item.category] = [];
-  bucket[item.category].push(item);
+  if (item.type === 'api') {
+    if (!apiCategories[item.category]) apiCategories[item.category] = [];
+    apiCategories[item.category].push(item);
+  } else if (item.category.startsWith('PICO-8:')) {
+    const key = item.category.replace('PICO-8: ', '');
+    if (!pico8ShortcutCategories[key]) pico8ShortcutCategories[key] = [];
+    pico8ShortcutCategories[key].push(item);
+  } else {
+    if (!shortcutCategories[item.category]) shortcutCategories[item.category] = [];
+    shortcutCategories[item.category].push(item);
+  }
 }
 
 debug('shortcut categories: %o', Object.keys(shortcutCategories));
+debug('pico-8 shortcut categories: %o', Object.keys(pico8ShortcutCategories));
 debug('api categories: %o', Object.keys(apiCategories));
 
 debug('rendering template');
 const template = fs.readFileSync(path.join(__dirname, 'template.ejs'), 'utf8');
-const html = ejs.render(template, { shortcutCategories, apiCategories, hlShortcut, hlSig });
+const html = ejs.render(template, { shortcutCategories, pico8ShortcutCategories, apiCategories, hlShortcut, hlSig });
 
 const outPath = path.join(__dirname, 'cheatsheet.html');
 debug('writing %s', outPath);
