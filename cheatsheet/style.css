@@ -171,7 +171,7 @@ h1 {
   align-items: center;
 }
 
-.shortcut-row { margin-bottom: 0.5em; }
+.shortcut-row { margin-bottom: 1em; }
 
 .shortcut-row .key  { flex-shrink: 0; min-width: 0; }
 .shortcut-row .desc { flex: 1; min-width: 7rem; }
@@ -222,7 +222,7 @@ code, .sig {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.25rem 0;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   align-items: center;
 }
 .api-entry .sig  { flex-shrink: 0; white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
