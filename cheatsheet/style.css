@@ -89,6 +89,8 @@ body {
   background: var(--key-bg);
   color: var(--key-fg);
   border: 0;
+  border-top: 1px solid var(--fg);
+  border-left: 1px solid var(--fg);
   border-right: 1px solid var(--fg);
   border-bottom: 1px solid var(--fg);
   padding: 0.3rem 0.75rem 0.35rem;
@@ -160,8 +162,6 @@ h1 {
   color: var(--fg);
   letter-spacing: 0.08em;
   margin-bottom: 0.45rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 1px solid var(--border);
 }
 
 /* ═══ SHORTCUT LIST ══════════════════════════════════════════════════════ */
@@ -220,6 +220,8 @@ code, .sig {
   text-transform: none;
   text-align: right;
 }
+
+.is-wrapped .desc { text-align: left; }
 
 /* ═══ API ENTRIES ═══════════════════════════════════════════════════════ */
 .api-entry {
