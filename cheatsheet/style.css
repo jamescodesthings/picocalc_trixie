@@ -29,7 +29,7 @@
 
   /* Syntax highlight — on top of --key-bg (light bg in dark mode) */
   --h-op:       #004488;
-  --h-mand:     #bb0055;
+  --h-mand:     #aa33ff;
   --h-opt:      #667788;
 
   --font-pico: 'PICO-8', 'Courier New', monospace;
