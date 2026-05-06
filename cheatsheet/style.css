@@ -207,15 +207,16 @@ code, .sig {
 /* ═══ API ENTRIES ═══════════════════════════════════════════════════════ */
 .api-entry {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 0.25rem 0;
   border-top: 1px solid var(--border);
+  align-items: center;
 }
 
 .api-entry:first-of-type { border-top: none; }
-.api-entry .sig { white-space: normal; overflow-wrap: break-word; }
-.api-entry .desc { word-break: break-word; }
+.api-entry .sig  { flex-shrink: 0; white-space: normal; overflow-wrap: break-word; }
+.api-entry .desc { flex: 1; min-width: 7rem; word-break: break-word; }
 
 /* ═══ RESPONSIVE ════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
