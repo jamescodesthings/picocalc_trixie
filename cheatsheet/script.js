@@ -13,7 +13,7 @@
   }
 
   var saved = localStorage.getItem('picocalc-theme');
-  applyTheme(saved === 'light');
+  applyTheme(saved !== 'dark');
 
   btn.addEventListener('click', function () {
     var isLight = !body.classList.contains('light');
