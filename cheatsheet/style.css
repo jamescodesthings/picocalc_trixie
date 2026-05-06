@@ -23,14 +23,14 @@
   --border:     #2a2a2a;
   --accent:     #ff5555;
 
-  /* Keys: off-white with blue tint, dark text */
-  --key-bg:     #eff6f8;
-  --key-fg:     #111111;
+  /* Keys: black bg, white text/border */
+  --key-bg:     #000000;
+  --key-fg:     #f0f0f0;
 
-  /* Syntax highlight — on top of --key-bg (light bg in dark mode) */
-  --h-op:       #004488;
+  /* Syntax highlight — on dark key bg */
+  --h-op:       #55aaff;
   --h-mand:     #aa33ff;
-  --h-opt:      #667788;
+  --h-opt:      #8899aa;
 
   --font-pico: 'PICO-8', 'Courier New', monospace;
   --font-sans: 'DejaVu Sans Mono', 'Courier New', monospace;
@@ -46,14 +46,14 @@ body.light {
   --border:     #cccccc;
   --accent:     #e8002a;
 
-  /* Keys: dark grey bg, light text */
-  --key-bg:     #2a2a2a;
-  --key-fg:     #f2f2f2;
+  /* Keys: white bg, black text/border */
+  --key-bg:     #ffffff;
+  --key-fg:     #0f0f0f;
 
-  /* Syntax highlight — on top of --key-bg (dark bg in light mode) */
-  --h-op:       #55aaff;
-  --h-mand:     #ff77aa;
-  --h-opt:      #8899aa;
+  /* Syntax highlight — on light key bg */
+  --h-op:       #004488;
+  --h-mand:     #8800cc;
+  --h-opt:      #667788;
 }
 
 /* ═══ BASE ══════════════════════════════════════════════════════════════ */
@@ -81,8 +81,8 @@ body {
   background: var(--key-bg);
   color: var(--key-fg);
   border: 0;
-  border-right: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
+  border-right: 1px solid var(--fg);
+  border-bottom: 1px solid var(--fg);
   padding: 0.3rem 0.75rem 0.35rem;
   cursor: pointer;
   z-index: 9999;
@@ -180,8 +180,8 @@ code, .sig {
   background: var(--key-bg);
   color: var(--key-fg);
   border: 0;
-  border-right: 2px solid var(--accent);
-  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--fg);
+  border-bottom: 2px solid var(--fg);
   padding: 0.75em 1.25em;
   display: inline-block;
   white-space: nowrap;
@@ -279,7 +279,7 @@ code, .sig {
   body.light .panel > h2   { color: #000 !important; border-color: #999 !important; }
   body.light .category-block          { background: #fff !important; border-color: #ccc !important; }
   body.light .category-block h3       { color: #000 !important; border-color: #ccc !important; }
-  body.light code, body.light .sig    { background: #ffffff !important; color: #000000 !important; }
+  body.light code, body.light .sig    { background: #ffffff !important; color: #0f0f0f !important; }
   body.light .h-op, body.light .h-mand, body.light .h-opt { color: #444 !important; }
   body.light .desc                    { color: #333 !important; }
   body.light .shortcut-row + .shortcut-row { border-color: #ddd !important; }
@@ -302,8 +302,8 @@ code, .sig {
   body:not(.light) code, body:not(.light) .sig {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    background: #eff6f8 !important;
-    color: #111111 !important;
+    background: #000000 !important;
+    color: #f0f0f0 !important;
   }
   body:not(.light) .desc                  { color: #e0e0e0 !important; }
   body:not(.light) .shortcut-row + .shortcut-row { border-color: #2a2a2a !important; }

@@ -68,6 +68,23 @@
         <% } %>
       </div>
     </section>
+
+    <section class="panel terminal-panel">
+      <h2>terminal</h2>
+      <div class="category-grid">
+        <% for (const [category, items] of Object.entries(terminalCategories)) { %>
+        <div class="category-block">
+          <h3><%= category.toLowerCase() %></h3>
+          <% items.forEach(function(item) { %>
+          <div class="api-entry">
+            <code class="sig"><%- hlSig(item.signature) %></code>
+            <span class="desc"><%= item.description %></span>
+          </div>
+          <% }); %>
+        </div>
+        <% } %>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
