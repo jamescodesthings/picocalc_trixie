@@ -74,7 +74,7 @@
       <div class="category-grid">
         <% for (const [category, items] of Object.entries(apiCategories)) { %>
         <div class="category-block">
-          <h3><%= category.replace('API: ', '').toLowerCase() %></h3>
+          <h3><%= category.toLowerCase() %></h3>
           <% items.forEach(function(item) { %>
           <div class="api-entry">
             <code class="sig"><%- hlSig(item.signature) %></code>

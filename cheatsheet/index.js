@@ -56,8 +56,9 @@ const apiCategories = {};
 const terminalCategories = {};
 for (const item of data) {
   if (item.type === 'api') {
-    if (!apiCategories[item.category]) apiCategories[item.category] = [];
-    apiCategories[item.category].push(item);
+    const key = item.category.replace('API: ', '');
+    if (!apiCategories[key]) apiCategories[key] = [];
+    apiCategories[key].push(item);
   } else if (item.type === 'terminal') {
     const key = item.category.replace('Terminal: ', '');
     if (!terminalCategories[key]) terminalCategories[key] = [];
