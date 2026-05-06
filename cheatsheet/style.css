@@ -227,7 +227,7 @@ code, .sig {
 }
 
 .api-entry:first-of-type { border-top: none; }
-.api-entry .sig  { flex-shrink: 0; white-space: normal; overflow-wrap: break-word; }
+.api-entry .sig  { flex-shrink: 0; white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
 .api-entry .desc { flex: 1; min-width: 7rem; word-break: break-word; }
 
 /* ═══ RESPONSIVE ════════════════════════════════════════════════════════ */
