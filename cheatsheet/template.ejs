@@ -20,14 +20,14 @@
         <% for (const [category, items] of Object.entries(shortcutCategories)) { %>
         <div class="category-block">
           <h3><%= category.toLowerCase() %></h3>
-          <table class="shortcut-table">
+          <div class="shortcut-list">
             <% items.forEach(function(item) { %>
-            <tr>
-              <td class="key"><code><%= item.shortcut %></code></td>
-              <td class="desc"><%= item.description %></td>
-            </tr>
+            <div class="shortcut-row">
+              <div class="key"><code><%- hlShortcut(item.shortcut) %></code></div>
+              <div class="desc"><%= item.description %></div>
+            </div>
             <% }); %>
-          </table>
+          </div>
         </div>
         <% } %>
       </div>
@@ -41,7 +41,7 @@
           <h3><%= category.replace('API: ', '').toLowerCase() %></h3>
           <% items.forEach(function(item) { %>
           <div class="api-entry">
-            <code class="sig"><%= item.signature %></code>
+            <code class="sig"><%- hlSig(item.signature) %></code>
             <span class="desc"><%= item.description %></span>
           </div>
           <% }); %>

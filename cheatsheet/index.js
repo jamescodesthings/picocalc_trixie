@@ -3,6 +3,34 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function hlShortcut(s) {
+  return s.split(' + ').map(escHtml).join(' <span class="h-op">+</span> ');
+}
+
+function hlSig(sig) {
+  let out = '', buf = '', inParens = false, inOpt = false;
+  const flush = () => {
+    if (!buf) return;
+    const cls = !inParens ? null : inOpt ? 'h-opt' : 'h-mand';
+    out += cls ? `<span class="${cls}">${escHtml(buf)}</span>` : escHtml(buf);
+    buf = '';
+  };
+  for (const ch of sig) {
+    if      (ch === '(') { flush(); out += `<span class="h-op">(</span>`; inParens = true; }
+    else if (ch === ')') { flush(); out += `<span class="h-op">)</span>`; inParens = false; }
+    else if (ch === '[') { flush(); out += `<span class="h-op">[</span>`; inOpt = true; }
+    else if (ch === ']') { flush(); out += `<span class="h-op">]</span>`; inOpt = false; }
+    else if (ch === ',') { flush(); out += `<span class="h-op">,</span>`; }
+    else                 { buf += ch; }
+  }
+  flush();
+  return out;
+}
+
 debug('reading data.json');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf8'));
 
@@ -20,7 +48,7 @@ debug('api categories: %o', Object.keys(apiCategories));
 
 debug('rendering template');
 const template = fs.readFileSync(path.join(__dirname, 'template.ejs'), 'utf8');
-const html = ejs.render(template, { shortcutCategories, apiCategories });
+const html = ejs.render(template, { shortcutCategories, apiCategories, hlShortcut, hlSig });
 
 const outPath = path.join(__dirname, 'cheatsheet.html');
 debug('writing %s', outPath);
