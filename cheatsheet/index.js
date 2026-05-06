@@ -85,6 +85,33 @@ const outPath = path.join(__dirname, 'cheatsheet.html');
 debug('writing %s', outPath);
 fs.writeFileSync(outPath, html, 'utf8');
 
+debug('building markdown');
+function buildMarkdown() {
+  const lines = ['# zerocalc', ''];
+
+  function section(heading, categories, keyField) {
+    lines.push(`## ${heading}`, '');
+    for (const [cat, items] of Object.entries(categories)) {
+      lines.push(`### ${cat.toLowerCase()}`, '');
+      for (const item of items) {
+        lines.push(`\`${item[keyField]}\` ${item.description}`);
+      }
+      lines.push('');
+    }
+  }
+
+  section('keyboard shortcuts', shortcutCategories, 'shortcut');
+  section('pico-8 keyboard shortcuts', pico8ShortcutCategories, 'shortcut');
+  section('pico-8 api', apiCategories, 'signature');
+  section('terminal', terminalCategories, 'signature');
+
+  return lines.join('\n');
+}
+
+const mdPath = path.join(__dirname, 'cheatsheet.md');
+debug('writing %s', mdPath);
+fs.writeFileSync(mdPath, buildMarkdown(), 'utf8');
+
 debug('done — %d shortcuts, %d api entries',
   data.filter(d => d.type === 'shortcut').length,
   data.filter(d => d.type === 'api').length
