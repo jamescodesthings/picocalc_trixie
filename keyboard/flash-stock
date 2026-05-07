@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+
+FIRMWARE_FILE="./firmware/Bin/PicoCalc_kbd_firmware_factory_v1.1.hex"
+
+echo "Finding device"
+DEVICE=$(ls /dev/tty.usbserial-*)
+
+if [ -z "$DEVICE" ]; then
+  echo "No device found. Please connect your keyboard and try again."
+  exit 1
+fi
+
+# if multiline output, error out
+if [ $(echo "$DEVICE" | wc -l) -gt 1 ]; then
+  echo "Multiple devices found. Please disconnect all but one device and try again."
+  echo "Devices found:"
+  echo "$DEVICE"
+  exit 1
+fi
+
+echo "Flashing firmware to device: $DEVICE"
+
+if [ ! -f "$FIRMWARE_FILE" ]; then
+  echo "Stock Firmware file not found."
+  exit 1
+fi
+
+~/.platformio/packages/tool-stm32duino/stm32flash/stm32flash -w "$FIRMWARE_FILE" -v -s 0x08000000 $DEVICE
+
+echo "Flashing complete."

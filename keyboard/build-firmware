@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+FIRMWARE_FILE="./firmware/Code/picocalc_keyboard/.pio/build/genericSTM32F103R8/firmware.bin"
+
+echo "Attempting firmware build"
+
+cd firmware/Code/picocalc_keyboard
+
+~/.platformio/penv/bin/pio run
+
+if [ $? -ne 0 ]; then
+  echo "Firmware build failed. Please check the output above for details."
+  exit 1
+fi
+
+cd ../../../
+
+if [ ! -f "$FIRMWARE_FILE" ]; then
+  echo "Firmware build failed. Output file not found: $FIRMWARE_FILE"
+  exit 1
+fi
+
+echo "Firmware build complete. Output file: $FIRMWARE_FILE"
